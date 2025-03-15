@@ -1,0 +1,452 @@
+2025-03-15 21:59:02,632 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2025-03-15 21:59:02,638 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 476, in get_connection
+    self.open_connection(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 528, in open_connection
+    conn_obj.open(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/connections/__init__.py", line 55, in open
+    network_driver = get_network_driver(platform)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/napalm/base/__init__.py", line 70, in get_network_driver
+    raise ModuleImportError("Please provide a valid driver name.")
+napalm.base.exceptions.ModuleImportError: Please provide a valid driver name.
+
+2025-03-15 21:59:02,639 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'backup_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/Code/nornir_netauto/netauto.py", line 18, in backup_config
+    return task.run(task=napalm_get, getters=["config"])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 173, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2025-03-15 21:59:35,615 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2025-03-15 21:59:35,616 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 476, in get_connection
+    self.open_connection(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 528, in open_connection
+    conn_obj.open(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/connections/__init__.py", line 55, in open
+    network_driver = get_network_driver(platform)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/napalm/base/__init__.py", line 70, in get_network_driver
+    raise ModuleImportError("Please provide a valid driver name.")
+napalm.base.exceptions.ModuleImportError: Please provide a valid driver name.
+
+2025-03-15 21:59:35,616 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'backup_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/Code/nornir_netauto/netauto.py", line 19, in backup_config
+    return task.run(task=napalm_get, getters=["config"])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 173, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2025-03-15 22:02:29,418 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2025-03-15 22:02:29,419 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 476, in get_connection
+    self.open_connection(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 528, in open_connection
+    conn_obj.open(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/connections/__init__.py", line 55, in open
+    network_driver = get_network_driver(platform)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/napalm/base/__init__.py", line 70, in get_network_driver
+    raise ModuleImportError("Please provide a valid driver name.")
+napalm.base.exceptions.ModuleImportError: Please provide a valid driver name.
+
+2025-03-15 22:02:29,419 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'backup_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/Code/nornir_netauto/netauto.py", line 19, in backup_config
+    return task.run(task=napalm_get, getters=["config"])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 173, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2025-03-15 22:02:37,482 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2025-03-15 22:02:37,483 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 476, in get_connection
+    self.open_connection(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 528, in open_connection
+    conn_obj.open(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/connections/__init__.py", line 55, in open
+    network_driver = get_network_driver(platform)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/napalm/base/__init__.py", line 70, in get_network_driver
+    raise ModuleImportError("Please provide a valid driver name.")
+napalm.base.exceptions.ModuleImportError: Please provide a valid driver name.
+
+2025-03-15 22:02:37,483 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'backup_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/Code/nornir_netauto/netauto.py", line 19, in backup_config
+    return task.run(task=napalm_get, getters=["config"])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 173, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2025-03-15 22:05:56,068 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2025-03-15 22:05:56,069 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 476, in get_connection
+    self.open_connection(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 528, in open_connection
+    conn_obj.open(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/connections/__init__.py", line 55, in open
+    network_driver = get_network_driver(platform)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/napalm/base/__init__.py", line 70, in get_network_driver
+    raise ModuleImportError("Please provide a valid driver name.")
+napalm.base.exceptions.ModuleImportError: Please provide a valid driver name.
+
+2025-03-15 22:05:56,069 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'backup_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/Code/nornir_netauto/netauto.py", line 19, in backup_config
+    result = task.run(task=napalm_get, getters=["config"])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 173, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2025-03-15 22:06:19,236 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2025-03-15 22:06:19,237 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 476, in get_connection
+    self.open_connection(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 528, in open_connection
+    conn_obj.open(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/connections/__init__.py", line 55, in open
+    network_driver = get_network_driver(platform)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/napalm/base/__init__.py", line 70, in get_network_driver
+    raise ModuleImportError("Please provide a valid driver name.")
+napalm.base.exceptions.ModuleImportError: Please provide a valid driver name.
+
+2025-03-15 22:06:19,238 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'backup_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/Code/nornir_netauto/netauto.py", line 19, in backup_config
+    result = task.run(task=napalm_get, getters=["config"])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 173, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2025-03-15 22:06:44,023 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2025-03-15 22:07:06,291 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 476, in get_connection
+    self.open_connection(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 528, in open_connection
+    conn_obj.open(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/connections/__init__.py", line 55, in open
+    network_driver = get_network_driver(platform)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/napalm/base/__init__.py", line 70, in get_network_driver
+    raise ModuleImportError("Please provide a valid driver name.")
+napalm.base.exceptions.ModuleImportError: Please provide a valid driver name.
+
+2025-03-15 22:08:32,777 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2025-03-15 22:08:34,403 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 476, in get_connection
+    self.open_connection(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 528, in open_connection
+    conn_obj.open(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/napalm/ios/ios.py", line 173, in open
+    self.device = self._netmiko_open(
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/napalm/base/base.py", line 129, in _netmiko_open
+    self._netmiko_device.enable()
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/netmiko/cisco_base_connection.py", line 27, in enable
+    return super().enable(
+           ^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/netmiko/base_connection.py", line 2062, in enable
+    raise ValueError(msg)
+ValueError: Failed to enter enable mode. Please ensure you pass the 'secret' argument to ConnectHandler.
+
+2025-03-15 22:08:34,403 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'backup_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/Code/nornir_netauto/netauto.py", line 19, in backup_config
+    result = task.run(task=napalm_get, getters=["config"])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 173, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2025-03-15 22:09:22,685 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2025-03-15 22:09:24,278 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 476, in get_connection
+    self.open_connection(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 528, in open_connection
+    conn_obj.open(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/napalm/ios/ios.py", line 173, in open
+    self.device = self._netmiko_open(
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/napalm/base/base.py", line 129, in _netmiko_open
+    self._netmiko_device.enable()
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/netmiko/cisco_base_connection.py", line 27, in enable
+    return super().enable(
+           ^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/netmiko/base_connection.py", line 2062, in enable
+    raise ValueError(msg)
+ValueError: Failed to enter enable mode. Please ensure you pass the 'secret' argument to ConnectHandler.
+
+2025-03-15 22:09:24,279 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'backup_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/Code/nornir_netauto/netauto.py", line 19, in backup_config
+    result = task.run(task=napalm_get, getters=["config"])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 173, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2025-03-15 22:11:15,854 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2025-03-15 22:11:17,432 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 476, in get_connection
+    self.open_connection(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 528, in open_connection
+    conn_obj.open(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/napalm/ios/ios.py", line 173, in open
+    self.device = self._netmiko_open(
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/napalm/base/base.py", line 129, in _netmiko_open
+    self._netmiko_device.enable()
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/netmiko/cisco_base_connection.py", line 27, in enable
+    return super().enable(
+           ^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/netmiko/base_connection.py", line 2062, in enable
+    raise ValueError(msg)
+ValueError: Failed to enter enable mode. Please ensure you pass the 'secret' argument to ConnectHandler.
+
+2025-03-15 22:11:17,433 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'backup_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/Code/nornir_netauto/netauto.py", line 19, in backup_config
+    result = task.run(task=napalm_get, getters=["config"])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 173, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2025-03-15 22:13:48,680 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2025-03-15 22:15:43,463 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2025-03-15 22:18:09,616 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2025-03-15 22:18:27,203 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 476, in get_connection
+    self.open_connection(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 528, in open_connection
+    conn_obj.open(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/connections/__init__.py", line 56, in open
+    connection = network_driver(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: IOSDriver.__init__() got an unexpected keyword argument 'secret'
+
+2025-03-15 22:18:34,606 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2025-03-15 22:18:34,607 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 476, in get_connection
+    self.open_connection(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 528, in open_connection
+    conn_obj.open(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/connections/__init__.py", line 56, in open
+    connection = network_driver(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: IOSDriver.__init__() got an unexpected keyword argument 'secret'
+
+2025-03-15 22:18:34,607 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'backup_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/Code/nornir_netauto/netauto.py", line 19, in backup_config
+    result = task.run(task=napalm_get, getters=["config"])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 173, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2025-03-15 22:19:01,878 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2025-03-15 22:19:28,759 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 476, in get_connection
+    self.open_connection(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 528, in open_connection
+    conn_obj.open(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/connections/__init__.py", line 56, in open
+    connection = network_driver(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: IOSDriver.__init__() got an unexpected keyword argument 'secret'
+
+2025-03-15 22:19:28,760 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'backup_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/Code/nornir_netauto/netauto.py", line 19, in backup_config
+    result = task.run(task=napalm_get, getters=["config"])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 173, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2025-03-15 22:19:42,853 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2025-03-15 22:19:42,854 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 476, in get_connection
+    self.open_connection(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/inventory.py", line 528, in open_connection
+    conn_obj.open(
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir_napalm/plugins/connections/__init__.py", line 56, in open
+    connection = network_driver(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: IOSDriver.__init__() got an unexpected keyword argument 'secret'
+
+2025-03-15 22:19:42,854 - nornir.core.task -    ERROR -      start() - Host 'buildroom': task 'backup_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/Code/nornir_netauto/netauto.py", line 19, in backup_config
+    result = task.run(task=napalm_get, getters=["config"])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evangoulden/.local/share/virtualenvs/nornir_netauto-sh27gIds/lib/python3.11/site-packages/nornir/core/task.py", line 173, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2025-03-15 22:21:24,095 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts

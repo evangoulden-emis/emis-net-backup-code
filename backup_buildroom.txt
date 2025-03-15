@@ -1,0 +1,361 @@
+!
+
+
+!
+version 12.2
+no service pad
+service timestamps debug uptime
+service timestamps log datetime msec
+service password-encryption
+service sequence-numbers
+!
+hostname FG-MB-BUILD
+!
+boot-start-marker
+boot-end-marker
+!
+logging buffered 8194 informational
+enable secret 5 $1$3sw3$voerp9n./MAqzhqfZXTbI0
+!
+username mikem privilege 15 secret 5 $1$4Ptp$HqLO2lpDyfswI2B8kzeaZ/
+username ismailaj privilege 15 secret 5 $1$rAPw$aB8cbmi6hmENLVPGYhdm30
+username philg privilege 15 secret 5 $1$GqtY$ilgtcUM7jfVgnqNzbVv5G/
+username damiang privilege 15 secret 5 $1$puVK$VHWteXI1JuB4ta49xwyAH/
+username husseinj privilege 15 secret 5 $1$76Or$tCqMM5Dk44yu7i/waFxlh1
+username zahirf privilege 15 secret 5 $1$nT7U$P2dq6HZ5ZKBfDW2S8h2r91
+username shaunm privilege 15 secret 5 $1$U2xs$Z6OqzfjQwy49khW/iAo.b.
+username altafr privilege 15 secret 5 $1$r74w$e.6RQfZutnZABYlYqPSoR1
+username abbasf privilege 15 secret 5 $1$NH3v$ErnmfHO3sYsqJsn1ZLAdX1
+username barbaraw privilege 15 secret 5 $1$X.83$eClJf09cqZZO08FxKF5Iu/
+username victorf privilege 15 secret 5 $1$z7ET$J2.G.uGzGl96/k5CVROBG1
+username mickeshf privilege 15 secret 5 $1$qqyj$znuts.9vmybwzdOHa.4uA1
+username tobyf privilege 15 secret 5 $1$nL5G$EOTJffPRQFUih1DZVvgFs1
+username brynl privilege 15 secret 5 $1$WdJ4$dUabSi2MONj2FjLQULb4L1
+username ahmedd privilege 15 secret 5 $1$tBU8$l/A3grx4gmD7LndlK7u5t.
+username netadmin privilege 15 secret 5 $1$qAKR$wamAVaYBXUqEsdFF.V6pb/
+!
+!
+aaa new-model
+!
+!
+aaa group server radius EMIS_ISE
+ server 192.168.147.220 auth-port 1812 acct-port 1813
+ server 192.168.115.124 auth-port 1812 acct-port 1813
+ ip radius source-interface Vlan1
+!
+aaa authentication dot1x default group radius
+aaa authorization network default group radius 
+aaa accounting dot1x default start-stop group radius
+!
+!
+!
+aaa session-id common
+clock summer-time BST recurring last Sun Mar 2:00 last Sun Oct 3:00
+switch 1 provision ws-c3750g-24t
+system mtu routing 1500
+no ip domain-lookup
+ip domain-name emis.local
+!
+!
+login on-failure log
+login on-success log
+!
+!
+crypto pki trustpoint TP-self-signed-2965263744
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2965263744
+ revocation-check none
+ rsakeypair TP-self-signed-2965263744
+!
+!
+crypto pki certificate chain TP-self-signed-2965263744
+ certificate self-signed 01
+  3082024E 308201B7 A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 32393635 32363337 3434301E 170D3933 30333031 30303031 
+  35375A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 39363532 
+  36333734 3430819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100B81E ED3ED71B E8A0FAB3 452604D6 F12C55E1 7672DD74 798C1760 059A9966 
+  F341CCBB 32E9F0ED 622CCF50 8C46C559 41520BC2 32B39EE3 9245170D D30F0AD6 
+  8F2A7133 D4CA7CD6 3D9B4C96 D1DAB3C7 882D4E04 59C17805 96D0C793 29C86060 
+  54900BE8 FE4B9579 CF6C3730 1AB71501 003FF1A1 EF2E06A2 713EFFF3 6B6A6F2F 
+  2FB70203 010001A3 76307430 0F060355 1D130101 FF040530 030101FF 30210603 
+  551D1104 1A301882 1646472D 4D422D42 55494C44 2E656D69 732E6C6F 63616C30 
+  1F060355 1D230418 30168014 36AA2723 26791B56 2A86897F 4B9292AB 844FF6F1 
+  301D0603 551D0E04 16041436 AA272326 791B562A 86897F4B 9292AB84 4FF6F130 
+  0D06092A 864886F7 0D010104 05000381 8100065F E3F712FC 6D7331A7 6143444B 
+  1975B264 F9CA2EEC D59B5A59 B8E6A35B FF9BF235 3962A84D D9973088 041C5205 
+  74328321 2D056A62 1109D46A 6150BD16 52A20FE1 DDAC8549 9614CC2D A647429F 
+  5DB5AAAF FA01D24E DA55D76F 913C4E79 5A73B869 2B9C7F4E AF012E43 3640E229 
+  4F1BBFCB 2360A1C2 28D5B5BD 11BDA386 5AB5
+  quit
+dot1x system-auth-control
+!
+!
+!
+archive
+ log config
+  logging enable
+ path ftp://10.139.2.7/FG-MB-BUILD
+ write-memory
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip ftp username ftpuser
+ip ftp password 7 10481D0910041719
+ip ssh version 2
+!
+!
+interface GigabitEthernet1/0/1
+ description Cisco Nexus 1
+ switchport access vlan 153
+ switchport mode access
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/2
+ description Cisco Nexus 2
+ switchport access vlan 153
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/3
+ description LSGF06-SRX340-09 Node1
+ switchport access vlan 148
+ switchport mode access
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/4
+ description Cisco Nexus 3
+ switchport access vlan 153
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+!
+interface GigabitEthernet1/0/5
+ description Cisco Nexus 4
+ switchport access vlan 153
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+!
+interface GigabitEthernet1/0/6
+ description OpenGear
+ switchport access vlan 148
+ switchport mode access
+ storm-control broadcast level 0.10
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/7
+ switchport access vlan 148
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+!
+interface GigabitEthernet1/0/8
+!
+interface GigabitEthernet1/0/9
+ description RITM0171484 - CAMIS
+ switchport access vlan 147
+ switchport mode access
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/10
+ description RITM0171484 - CAMIS
+ switchport access vlan 147
+ switchport mode access
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+!
+interface GigabitEthernet1/0/11
+ description Cisco Nexus 5
+ switchport access vlan 153
+ switchport mode access
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/12
+ description Cisco Nexus 6
+ switchport access vlan 153
+ switchport mode access
+!
+interface GigabitEthernet1/0/13
+ description RITM0171484 - CAMIS
+ switchport access vlan 147
+ switchport mode access
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+!
+interface GigabitEthernet1/0/14
+ description RITM0171484 - CAMIS
+ switchport access vlan 147
+ switchport mode access
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+!
+interface GigabitEthernet1/0/15
+ switchport access vlan 153
+ switchport mode access
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/16
+ description Cisco Catalyst 1
+ switchport access vlan 148
+ switchport mode access
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+!
+interface GigabitEthernet1/0/17
+ description Cisco Nexus Switch 5
+ switchport access vlan 153
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/18
+ description Cisco Nexus Switch 6
+ switchport access vlan 153
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/19
+ description Infoblox LAN1
+ switchport access vlan 153
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/20
+ switchport access vlan 153
+ switchport mode access
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+!
+interface GigabitEthernet1/0/21
+ description Cisco Catalyst 2
+ switchport access vlan 153
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+!
+interface GigabitEthernet1/0/22
+ description Fulford-DMZSRX345B
+ switchport access vlan 153
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/23
+ description Fulford-DMZSRX345A
+ switchport access vlan 148
+ storm-control broadcast level 1.00
+ storm-control action shutdown
+!
+interface GigabitEthernet1/0/24
+ description Uplink to 3850X B2 Gi1/0/45
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,147,148,153
+ switchport mode trunk
+!
+interface Vlan1
+ ip address 10.139.2.19 255.255.0.0
+!
+interface Vlan2
+ no ip address
+ shutdown
+!
+interface Vlan148
+ description CoreServices
+ ip address 192.168.148.7 255.255.255.0
+!
+interface Vlan153
+ no ip address
+!
+ip default-gateway 192.168.148.1
+ip classless
+no ip http server
+ip http secure-server
+!
+ip radius source-interface Vlan1 
+logging origin-id hostname
+logging 10.139.46.170
+logging host 10.139.48.19 transport tcp port 514 session-id hostname
+snmp-server community ciscopub RO
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps transceiver all
+snmp-server enable traps tty
+snmp-server enable traps eigrp
+snmp-server enable traps ospf state-change
+snmp-server enable traps ospf errors
+snmp-server enable traps ospf retransmit
+snmp-server enable traps ospf lsa
+snmp-server enable traps ospf cisco-specific state-change nssa-trans-change
+snmp-server enable traps ospf cisco-specific state-change shamlink interface-old
+snmp-server enable traps ospf cisco-specific state-change shamlink neighbor
+snmp-server enable traps ospf cisco-specific errors
+snmp-server enable traps ospf cisco-specific retransmit
+snmp-server enable traps ospf cisco-specific lsa
+snmp-server enable traps cluster
+snmp-server enable traps fru-ctrl
+snmp-server enable traps entity
+snmp-server enable traps cpu threshold
+snmp-server enable traps power-ethernet group 1-9
+snmp-server enable traps power-ethernet police
+snmp-server enable traps vtp
+snmp-server enable traps vlancreate
+snmp-server enable traps vlandelete
+snmp-server enable traps flash insertion removal
+snmp-server enable traps port-security
+snmp-server enable traps auth-framework sec-violation
+snmp-server enable traps dot1x auth-fail-vlan guest-vlan no-auth-fail-vlan no-guest-vlan
+snmp-server enable traps envmon fan shutdown supply temperature status
+snmp-server enable traps stackwise
+snmp-server enable traps license
+snmp-server enable traps event-manager
+snmp-server enable traps cef resource-failure peer-state-change peer-fib-state-change inconsistency
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps config-ctid
+snmp-server enable traps hsrp
+snmp-server enable traps ipmulticast
+snmp-server enable traps pim neighbor-change rp-mapping-change invalid-pim-message
+snmp-server enable traps energywise
+snmp-server enable traps vstack
+snmp-server enable traps bridge newroot topologychange
+snmp-server enable traps stpx inconsistency root-inconsistency loop-inconsistency
+snmp-server enable traps syslog
+snmp-server enable traps rtr
+snmp-server enable traps mac-notification change move threshold
+snmp-server enable traps vlan-membership
+snmp-server enable traps errdisable
+snmp-server host 10.139.64.64 version 2c ciscopub 
+radius-server dead-criteria time 10 tries 3
+radius-server host 192.168.147.220 auth-port 1812 acct-port 1813 key 7 135047435E585029286569
+radius-server host 192.168.115.124 auth-port 1812 acct-port 1813 key 7 040E5B575A75184D0A5844
+radius-server deadtime 10
+!
+banner login ^C
+FG-MB-BUILD
+^C
+!
+line con 0
+ logging synchronous
+line vty 0 4
+ logging synchronous
+ transport input ssh
+line vty 5 15
+ logging synchronous
+ transport input ssh
+!
+ntp clock-period 36029333
+ntp server 10.139.2.4
+end

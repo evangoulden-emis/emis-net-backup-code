@@ -1,0 +1,24 @@
+---
+buildroom:
+  hostname: 10.139.2.19
+  platform: ios
+  username: netadmin
+  password: 5h1th0tPa55w0rd!!
+  port: 22
+  groups:
+    - all
+    - ios
+    - fulford
+    - sbx
+
+
+fg-core-3850:
+  hostname: 10.141.14.1
+  username: netadmin
+  password: 5h1th0tPa55w0rd!!
+  port: 22
+  groups:
+    - all
+    - ios
+    - egton
+    - prd

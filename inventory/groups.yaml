@@ -1,0 +1,33 @@
+---
+all:
+  data:
+    domain: emishealth.com
+ios:
+  data:
+    net_os: ios
+fulford:
+  data:
+    location: fulford
+egton:
+    data:
+      location: egton
+
+
+
+# Critical Groups to add to the inventory to ensure we
+# don't run any playbooks on the wrong environment
+prd:
+  data:
+    env: prd
+dev:
+    data:
+      env: dev
+sbx:
+    data:
+      env: sbx
+    connection_options:
+      napalm:
+        extras:
+            optional_args:
+              secret: heisatwat
+              fast_cli: False
