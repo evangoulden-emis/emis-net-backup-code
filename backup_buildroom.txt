@@ -152,6 +152,7 @@ interface GigabitEthernet1/0/6
  spanning-tree portfast
 !
 interface GigabitEthernet1/0/7
+ description UNUSED_PORT
  switchport access vlan 148
  storm-control broadcast level 1.00
  storm-control action shutdown
@@ -356,6 +357,6 @@ line vty 5 15
  logging synchronous
  transport input ssh
 !
-ntp clock-period 36029395
+ntp clock-period 36029366
 ntp server 10.139.2.4
 end
