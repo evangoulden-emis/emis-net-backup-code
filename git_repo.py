@@ -17,7 +17,6 @@ def get_github_instance() -> set[Github | Repository | Any] | None:
         return {g, repo, backup_dir}
 
 
-
 def upload_file_to_github(g, repo, backup_dir):
     files = [f for f in os.listdir(backup_dir) if f.endswith('.txt')]
     for f in files:
