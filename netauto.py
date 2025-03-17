@@ -2,13 +2,15 @@ from pprint import pprint as pp
 from nornir import InitNornir
 from nornir.core.inventory import ConnectionOptions
 from nornir_napalm.plugins.tasks import napalm_get
+from git_repo import get_github_instance, upload_file_to_github
 
 
 def netauto():
+    g, repo, backup_dir = get_github_instance()
     nr = InitNornir(config_file="config.yaml")
     sbx_devices = nr.filter(env="sbx")
     sbx_devices.run(task=backup_config)
-
+    upload_file_to_github(g, repo, backup_dir)
 
 def backup_config(task):
     secret = ""
@@ -35,7 +37,7 @@ def backup_config(task):
 
     if running_config:
         print(f"Backup for {task.host}:")
-        with open(f"backup_{task.host}.txt", "w") as f:
+        with open(f"./backups/backup_{task.host}.txt", "w") as f:
             f.write(running_config)
     else:
         print(f"No config retrieved for {task.host}")

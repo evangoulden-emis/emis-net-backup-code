@@ -1,0 +1,5 @@
+---
+secrets:
+  token: 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
+repo: evangoulden-emis/emis-net-backups
+backup_dir: ./backups

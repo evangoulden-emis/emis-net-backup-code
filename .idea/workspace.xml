@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1629a09c-0c24-425e-b02f-29678778e7b4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/git_repo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/github.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backup_buildroom.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backup_buildroom.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backup_SF-CORE-DMZ-SRX345-0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backups/backup_SF-CORE-DMZ-SRX345-0.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backup_buildroom.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backups/backup_buildroom.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/netauto.py" beforeDir="false" afterPath="$PROJECT_DIR$/netauto.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nornir.log" beforeDir="false" afterPath="$PROJECT_DIR$/nornir.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +41,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.git_repo.executor": "Debug",
     "Python.netauto.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -50,6 +57,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backups" />
       <recent name="$PROJECT_DIR$/inventory" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -71,7 +79,8 @@
       <option name="presentableId" value="Default" />
       <updated>1742070849586</updated>
       <workItem from="1742070850606" duration="11569000" />
-      <workItem from="1742212103452" duration="1152000" />
+      <workItem from="1742212103452" duration="4098000" />
+      <workItem from="1742216870775" duration="3268000" />
     </task>
     <servers />
   </component>
@@ -83,13 +92,24 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/netauto.py</url>
-          <line>14</line>
+          <line>16</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/git_repo.py</url>
+          <line>21</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/netauto.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/nornir_netauto$netauto.coverage" NAME="netauto Coverage Results" MODIFIED="1742212569867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/nornir_netauto$netauto.coverage" NAME="netauto Coverage Results" MODIFIED="1742220123766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/nornir_netauto$git_repo.coverage" NAME="git_repo Coverage Results" MODIFIED="1742219279524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -357,6 +357,6 @@ line vty 5 15
  logging synchronous
  transport input ssh
 !
-ntp clock-period 36029366
+ntp clock-period 36029289
 ntp server 10.139.2.4
 end
