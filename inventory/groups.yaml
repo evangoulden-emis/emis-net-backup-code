@@ -25,9 +25,10 @@ dev:
 sbx:
     data:
       env: sbx
-    connection_options:
-      napalm:
-        extras:
-            optional_args:
-              secret: heisatwat
-              fast_cli: False
+
+#    connection_options:
+#      napalm:
+#        extras:
+#            optional_args:
+#              secret: heisatwat
+#              fast_cli: False

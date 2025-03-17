@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="1629a09c-0c24-425e-b02f-29678778e7b4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backup_buildroom.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory/groups.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/groups.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory/hosts.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/hosts.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/netauto.py" beforeDir="false" afterPath="$PROJECT_DIR$/netauto.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nornir.log" beforeDir="false" afterPath="$PROJECT_DIR$/nornir.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +73,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742070849586</updated>
-      <workItem from="1742070850606" duration="7439000" />
+      <workItem from="1742070850606" duration="11039000" />
     </task>
     <servers />
   </component>
@@ -80,12 +86,12 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/netauto.py</url>
           <line>18</line>
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/nornir_netauto$netauto.coverage" NAME="netauto Coverage Results" MODIFIED="1742077283691" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/nornir_netauto$netauto.coverage" NAME="netauto Coverage Results" MODIFIED="1742206242826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

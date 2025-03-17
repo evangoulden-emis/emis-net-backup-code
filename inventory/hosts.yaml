@@ -4,17 +4,19 @@ buildroom:
   platform: ios
   username: netadmin
   password: 5h1th0tPa55w0rd!!
-  secret: heisatwat
   port: 22
   groups:
     - all
     - ios
     - fulford
     - sbx
+  data:
+    secret: heisatwat
 
 
 fg-core-3850:
   hostname: 10.141.14.1
+  platform: ios
   username: netadmin
   password: 5h1th0tPa55w0rd!!
   secret: heisatwat
@@ -24,3 +26,5 @@ fg-core-3850:
     - ios
     - egton
     - prd
+  data:
+    secret: heisatwat
