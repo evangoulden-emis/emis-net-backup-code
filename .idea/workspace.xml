@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1629a09c-0c24-425e-b02f-29678778e7b4" name="Changes" comment="" />
+    <list default="true" id="1629a09c-0c24-425e-b02f-29678778e7b4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,11 +22,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;evangoulden-emis&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/evangoulden-emis/emis-net-backup-code.git&quot;,
+    &quot;accountId&quot;: &quot;1c474328-6fb4-451c-a5f9-d1afbaa91747&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2uMudDDTt9bNfEA24MdFvAX97gO" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -36,27 +49,29 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/evangoulden/Code/nornir_netauto",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/utilities" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/backups" />
       <recent name="$PROJECT_DIR$/inventory" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-PY-243.23654.177" />
-        <option value="bundled-python-sdk-91d3a02ef49d-43b77aa2d136-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.23654.177" />
+        <option value="bundled-js-predefined-d6986cc7102b-d159365566ee-JavaScript-PY-251.23774.37" />
+        <option value="bundled-python-sdk-a606e5e558ee-f4058bf5e88f-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.23774.37" />
       </set>
     </attachedChunks>
   </component>
@@ -70,7 +85,9 @@
       <updated>1742070849586</updated>
       <workItem from="1742070850606" duration="11569000" />
       <workItem from="1742212103452" duration="4098000" />
-      <workItem from="1742216870775" duration="4431000" />
+      <workItem from="1742216870775" duration="7060000" />
+      <workItem from="1742227862861" duration="77000" />
+      <workItem from="1742227995416" duration="865000" />
     </task>
     <servers />
   </component>

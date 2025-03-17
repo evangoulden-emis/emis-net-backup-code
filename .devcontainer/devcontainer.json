@@ -1,0 +1,12 @@
+{
+  "name": "Basic Python",
+  "build": {
+    "context": "..", 
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "netauto",
+   
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  }
+}
