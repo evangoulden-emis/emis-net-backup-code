@@ -1,0 +1,3171 @@
+
+## Last commit: 2025-02-14 16:00:26 UTC by netadmin
+version 21.2R3.8;
+groups {
+    node0 {
+        system {
+            host-name SF-CORE-DMZ-SRX340-0;
+            services {
+                ssh {
+                    max-sessions-per-connection 32;
+                }
+            }
+            syslog {
+                file default-log-messages {
+                    any info;
+                    match "(requested 'commit' operation)|(requested 'commit synchronize' operation)|(copying configuration to juniper.save)|(commit complete)|ifAdminStatus|(FRU power)|(FRU removal)|(FRU insertion)|(link UP)|transitioned|Transferred|transfer-file|(license add)|(license delete)|(package -X update)|(package -X delete)|(FRU Online)|(FRU Offline)|(plugged in)|(unplugged)|GRES|(AIS_DATA_AVAILABLE)";
+                    structured-data;
+                }
+            }
+        }
+        interfaces {
+            fxp0 {
+                disable;
+                unit 0;
+            }
+        }
+    }
+    node1 {
+        system {
+            host-name SF-CORE-DMZ-SRX340-1;
+            syslog {
+                file default-log-messages {
+                    any info;
+                    match "(requested 'commit' operation)|(requested 'commit synchronize' operation)|(copying configuration to juniper.save)|(commit complete)|ifAdminStatus|(FRU power)|(FRU removal)|(FRU insertion)|(link UP)|transitioned|Transferred|transfer-file|(license add)|(license delete)|(package -X update)|(package -X delete)|(FRU Online)|(FRU Offline)|(plugged in)|(unplugged)|GRES|(AIS_DATA_AVAILABLE)";
+                    structured-data;
+                }
+            }
+        }
+        interfaces {
+            fxp0 {
+                disable;
+                unit 0;
+            }
+        }
+    }
+}
+apply-groups "${node}";
+system {
+    host-name SF-CORE-DMZ-SRX345-0;
+    root-authentication {
+        encrypted-password "$1$y3x3xCFS$8OZwTwrKE/GU6A39YsKWl/";
+    }
+    login {
+        retry-options {
+            tries-before-disconnect 3;
+        }
+        class RW-Class {
+            idle-timeout 20;
+            permissions all;
+        }
+        class read-only-hcl {
+            permissions [ routing security system view view-configuration ];
+        }
+        user RW-User {
+            uid 1001;
+            class RW-Class;
+        }
+        user ahmedd {
+            uid 2015;
+            class super-user;
+            authentication {
+                encrypted-password "$1$gQEzdKT2$mzTy61zA.zGly4e8rW9uD.";
+            }
+        }
+        user altafr {
+            uid 2007;
+            class super-user;
+            authentication {
+                encrypted-password "$1$45L9Cf5L$ApdrP.5Wr.m11LTKM3Wfx/";
+            }
+        }
+        user hcladmin {
+            uid 2020;
+            class read-only-hcl;
+            authentication {
+                encrypted-password "$5$FBoecrMr$yTXdPJX5Cp4JiV9za/.A6aRno9Azr/GYXX5qEzDsYv0";
+            }
+        }
+        user johnf {
+            uid 2014;
+            class super-user;
+            authentication {
+                encrypted-password "$5$T4PlCSB7$fiu9Axgqbzvp9KV2KIhuD5vnqVE0psfEblGf9TWVYW/";
+            }
+        }
+        user mikem {
+            uid 2000;
+            class super-user;
+            authentication {
+                encrypted-password "$1$U5JMckpq$Sai2zSLaUU6tlrNyAj7gl0";
+                ssh-dsa "ssh-dss AAAAB3NzaC1kc3MAAACBAOmUUQ8VTGN6SZW2CEyWq9YahQ0IuoxsGcZWRSdybo0Zdkjv1enW1zoGBkZxX3l38mBU0BKGIvf/sfLEzaPmTG5Q6F8Zvq4mxS+wZBmLZv36jUuWtK+flQNn2XOg4ywe3k+ZcLs43L1s2he2zC0j9rbY2VnzfIm4AAJgsDVvwxGTAAAAFQD24sfnHr1bn+2JXZWh3/qJfytuFwAAAIEAm3EzYx5a2PUD1iCkD8pNyDkmWZiaQRqdCkwVvtmFwvsoI7rUS07CxBRsEqdT/SfQ5aDzw0zJrHUgRQ1m8ceil/bsgF0MCtE0yJO5qM082H8JCLtmJkUCstr5iPTVrM6f6TaXbbrF8sv4ZaUy2NZSMcd8qo4t0Ypd+GQObZDAKygAAACAD86T8OdQAvk5Cn9W9Vk0DeAp8GqrxqClPd1j1IJlShjb5jAfek1cA7nzV+gXaFysfw/jhttNvRrGvpnGLomOXwVmxVm+3SmQhTjSau5ZtXWVRWGIGe5Tqb9xK7uP/Qe2p/BXch+WqfMfzwlfQS+FkQq0HI24KiwUToflr4Lqzb8= mikem@ins666";
+            }
+        }
+        user nessus.scan {
+            uid 2019;
+            class super-user;
+            authentication {
+                encrypted-password "$5$XRdT.Rh3$yGh9JZfDcWZBpGFP1HxSCK80IvjvWO3ZeVHKhMjgiO.";
+            }
+        }
+        user netadmin {
+            uid 2017;
+            class super-user;
+            authentication {
+                encrypted-password "$5$6AwOcR3Z$5QBr88vhlOSIvwUU1H0F5hPUDkprDDyN8HgAcV9LDiD";
+            }
+        }
+        user odaya {
+            uid 2018;
+            class super-user;
+            authentication {
+                encrypted-password "$5$hLbBQ7Q9$ZOUAfPIxC3BVjNkYWHliZk6lQjpHIGCnuJZYnjzqxh.";
+            }
+        }
+    }
+    services {
+        ssh {
+            root-login allow;
+            protocol-version v2;
+        }
+        xnm-clear-text;
+        netconf {
+            ssh;
+        }
+    }
+    no-redirects;
+    authentication-order [ tacplus password ];
+    name-server {
+        10.139.1.1;
+    }
+    tacplus-server {
+        192.168.147.220 {
+            secret "$9$A0.Ftu1LX-24ZX7HmP5/90BIRSeVb2";
+            source-address 10.139.2.62;
+        }
+        192.168.115.124 {
+            secret "$9$KZdvWxZGifT3GDA0O1rl8X7Nb2kqf";
+            source-address 10.139.2.62;
+        }
+    }
+    accounting {
+        events [ login change-log interactive-commands ];
+        destination {
+            tacplus {
+                server {
+                    192.168.147.220 {
+                        secret "$9$0If2O1hN-waZj-VmTQFtpIEcSeWY2a";
+                        single-connection;
+                        source-address 10.139.2.62;
+                    }
+                    192.168.115.124 {
+                        secret "$9$Ym24ZzF/0BEFnlMWLbwoJGUHmCA0";
+                        single-connection;
+                        source-address 10.139.2.62;
+                    }
+                }
+            }
+        }
+    }
+    syslog {
+        archive size 100k files 3;
+        user * {
+            any emergency;
+        }
+        host 10.139.46.170 {
+            change-log any;
+            source-address 10.139.2.62;
+        }
+        host 192.168.115.117 {
+            any any;
+        }
+        host 192.168.147.199 {
+            any any;
+            port 11517;
+            source-address 10.139.2.62;
+        }
+        host 10.139.64.64 {
+            any any;
+        }
+        host 10.139.48.19 {
+            any warning;
+            change-log any;
+            port 514;
+            source-address 10.139.2.62;
+            transport tcp;
+        }
+        file auth {
+            any any;
+            match LOGIN;
+        }
+        file commands {
+            interactive-commands info;
+            match UI_CMDLINE_READ_LINE;
+        }
+        file interactive-commands {
+            interactive-commands error;
+        }
+        file messages {
+            any critical;
+            authorization info;
+        }
+        file ospf-nbr {
+            any any;
+            match RPD_OSPF_NBR;
+        }
+        file policy_session {
+            user info;
+            match RT_FLOW;
+            archive size 1000k world-readable;
+            structured-data;
+        }
+    }
+    max-configurations-on-flash 5;
+    max-configuration-rollbacks 5;
+    archival {
+        configuration {
+            transfer-on-commit;
+            archive-sites {
+                "ftp://ftpuser:ftpuser@10.139.2.7";
+            }
+        }
+    }
+    license {
+        autoupdate {
+            url https://ae1.juniper.net/junos/key_retrieval;
+        }
+    }
+    ntp {
+        server 10.139.2.4;
+    }
+}
+chassis {
+    cluster {
+        reth-count 5;
+        redundancy-group 0 {
+            node 0 priority 100;
+            node 1 priority 1;
+        }
+        redundancy-group 1 {
+            node 0 priority 100;
+            node 1 priority 1;
+            interface-monitor {
+                ge-0/0/7 weight 255;
+                ge-5/0/7 weight 255;
+            }
+        }
+        redundancy-group 2 {
+            node 0 priority 100;
+            node 1 priority 1;
+            interface-monitor {
+                ge-0/0/6 weight 255;
+                ge-5/0/6 weight 255;
+            }
+        }
+        redundancy-group 3 {
+            node 0 priority 100;
+            node 1 priority 1;
+            interface-monitor {
+                ge-0/0/5 weight 255;
+                ge-5/0/5 weight 255;
+            }
+        }
+        redundancy-group 4 {
+            node 0 priority 100;
+            node 1 priority 1;
+            interface-monitor {
+                ge-0/0/4 weight 255;
+                ge-5/0/4 weight 255;
+            }
+        }
+    }
+}
+services {
+    rpm {
+        probe jitter-bug {
+            test udp-jitter {
+                probe-type udp-ping;
+                target address 10.139.2.65;
+                probe-count 3;
+                probe-interval 5;
+                destination-port 7;
+                source-address 10.139.2.62;
+                hardware-timestamp;
+            }
+        }
+    }
+}
+security {
+    alg {
+        dns disable;
+        h323 disable;
+        mgcp disable;
+        msrpc disable;
+        sunrpc disable;
+        rsh disable;
+        rtsp disable;
+        sccp disable;
+        sip disable;
+        sql disable;
+        talk disable;
+        tftp disable;
+        pptp disable;
+    }
+    screen {
+        ids-option untrust-screen {
+            icmp {
+                ping-death;
+            }
+            ip {
+                source-route-option;
+                tear-drop;
+            }
+            tcp {
+                syn-flood {
+                    alarm-threshold 1024;
+                    attack-threshold 200;
+                    source-threshold 1024;
+                    destination-threshold 2048;
+                    timeout 20;
+                }
+                land;
+            }
+        }
+    }
+    nat {
+        source {
+            rule-set EG-MERAKI-CORP-to-LAN {
+                from zone trust;
+                to zone untrust;
+                rule source-nat-rule {
+                    match {
+                        source-address 192.168.234.0/23;
+                    }
+                    then {
+                        source-nat {
+                            interface;
+                        }
+                    }
+                }
+                rule Azure-zabbix-rule {
+                    match {
+                        source-address 51.179.206.178/32;
+                        destination-address 192.168.147.37/32;
+                        destination-port {
+                            10051;
+                        }
+                    }
+                    then {
+                        source-nat {
+                            interface;
+                        }
+                    }
+                }
+            }
+            rule-set NagiosCore-to-Eg_Meraki {
+                from zone untrust;
+                to zone trust;
+                rule source-nat-rule1 {
+                    match {
+                        source-address [ 10.139.2.16/32 10.139.2.200/32 ];
+                        destination-address 192.168.53.96/27;
+                    }
+                    then {
+                        source-nat {
+                            interface;
+                        }
+                    }
+                }
+            }
+            rule-set FG-MERAKI-CORP-to-LAN {
+                from zone MERAKI-WIFI-CORPORATE;
+                to zone untrust;
+                rule source-nat-FG-CORP {
+                    match {
+                        source-address 192.168.224.0/23;
+                        destination-address [ 192.168.0.0/16 10.139.0.0/16 10.141.10.0/24 10.141.7.0/24 100.112.32.0/20 ];
+                    }
+                    then {
+                        source-nat {
+                            interface;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    policies {
+        from-zone trust to-zone untrust {
+            policy MIUK-DMZ-DC-TO-MIUK-DC {
+                match {
+                    source-address MIUK-DMZ-DC01;
+                    destination-address MISRVDC03;
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy MELBOURNE-DC-POLICY {
+                match {
+                    source-address AU-MCMA00DC-001;
+                    destination-address [ UKLSMGR18 UKLSMGR02 UKLSMGR03 UKLSWDS25534 UKLSMGR14 ];
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy DC-Migration-Ian-Gill {
+                match {
+                    source-address 192.168.80.29;
+                    destination-address [ UKLSMGR18 192.168.147.25 UKLSMGR02 ];
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy HR_EGA3 {
+                match {
+                    source-address EGA3-CLIENT-RANGE-GROUP;
+                    destination-address [ vm-selip02 SV-EMIS06_CNTRDOC 192.168.176.79 ];
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy uklsmgr14-SMB-Access {
+                match {
+                    source-address any;
+                    destination-address uklsmgr14;
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy Glasgow_to_printer_Server {
+                match {
+                    source-address [ Glaswgow_wifi_corp Glaswgow_LAN ];
+                    destination-address [ uk-lfma00prn001 UK-BAMA00PRN001 uk-lsma00prn001 UK-WTMA00PRN001 ];
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy Migration-Ian-Gill {
+                match {
+                    source-address Rxdmz01-192.168.80.31;
+                    destination-address Rxleeds01-10.139.49.105;
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy Meraki-Wifi-SMB-access {
+                match {
+                    source-address EG-MERAKI-Corp;
+                    destination-address [ sv-selip02 emisdocs sv-admin3 ];
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy DHI {
+                match {
+                    source-address EGA3-CLIENT-RANGE-GROUP;
+                    destination-address [ Uk-lfdh00dbs002 UK-LFDH00DBS011 vm-dhi5 ];
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy EGA3-TO-EMIS-DOCS {
+                match {
+                    source-address EGA3-CLIENT-RANGE-GROUP;
+                    destination-address [ emisdocs emisdocs-2 emisdocs-3 emisdocs-192.168.147.217 ];
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy Development_SMB {
+                match {
+                    source-address EGA3-CLIENT-RANGE-GROUP;
+                    destination-address [ vm-tfsds SHAREDDB TET-2012r2dc-22 tet-2012r2dc-22 tet-2012r2dc-12-192.168.175.251 TET-Win8_1-10.DevTest-192.168.173.169 192.168.173.147 TET-12CONAPP-03-192.168.173.170 TET-2012DC-05-192.168.173.89 TET-2012DC-02-192.168.173.141 TET-2012DC-12-192.168.174.70 TET-2012DC-14-192.168.173.83 JumpServer-192.168.115.13 WOPR Camis-Server-192.168.59.38 tet-2012R2DC-08-192.168.175.35 UK-LFSU00CAM001 Camis-Server2-192.168.59.49 ];
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy EGA3-TO-DC {
+                match {
+                    source-address EGA3-CLIENT-RANGE-GROUP;
+                    destination-address [ UKLSMGR18 UKLSMGR02 emisdocs-3 vm-mod01 CORE-BOL-VPC CORE-BOL-VPC02 UK-BAMA00VPC001 uk-lfit00app003 uk-lfma00prn001 192.168.147.10_32 192.168.132.9_32 uk-lsma00prn001 UK-WTMA00PRN001 ];
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy DHI_Server {
+                match {
+                    source-address EGA3-CLIENT-RANGE-GROUP;
+                    destination-address [ vm-dhisimchange vm-dhisimcont ];
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy CHG0046599 {
+                match {
+                    source-address 192.168.80.15;
+                    destination-address 10.139.48.254;
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy CDB-SMB {
+                match {
+                    source-address EGA3-CLIENT-RANGE-GROUP;
+                    destination-address [ cdb-1 cdb-2 ];
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy EGA3-TO-WATFORD_SHARE {
+                match {
+                    source-address EGA3-CLIENT-RANGE-GROUP;
+                    destination-address [ WATFORD_SHARE-1 WATFORD_SHARE-2 WATFORD_SHARE-3 WATFORD_SHARE-4 WATFORD_SHARE-5 WATFORD_SHARE-6 WATFORD_SHARE-7 ];
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy RITM0044185 {
+                match {
+                    source-address DMZSEP01_192.168.82.15;
+                    destination-address Corporate-Windows-Server-2008-Clients;
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy FINANCE_EGA3 {
+                match {
+                    source-address EGA3-CLIENT-RANGE-GROUP;
+                    destination-address uklfdm00app001;
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy GRIT_EGA3 {
+                match {
+                    source-address EGA3-CLIENT-RANGE-GROUP;
+                    destination-address AZURE-GIT-CIDR_100.112.32.0/20;
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy EGA3-TO-GIT-AZURE-MS-SQL {
+                match {
+                    source-address EGA3-CLIENT-RANGE-GROUP;
+                    destination-address GIT-AZURE-MS-SQL-100.112.37.32/28;
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy EGA3-TO-GIT-AZURE-SUPPORT-TOOL {
+                match {
+                    source-address EGA3-CLIENT-RANGE-GROUP;
+                    destination-address GIT-AZURE-SUPPORT-TOOL-100.112.36.208/29;
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy RITM0144650 {
+                match {
+                    source-address EG-MERAKI-Corp;
+                    destination-address [ GIT-AZURE-File-Share-100.112.34.128/27 emisdocs-192.168.147.217 ];
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy SMB-DENY {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application junos-smb;
+                }
+                then {
+                    deny;
+                }
+            }
+            policy trust-to-untrust {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone untrust to-zone trust {
+            policy untrust-to-trust {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy EPMA_EIS_to_EPMA_DMZ {
+                description CR563214;
+                match {
+                    source-address ASC-PMA01SQL01_192.168.199.128;
+                    destination-address ASC-PMA01SQL02_192.168.81.83;
+                    application TCP-445;
+                }
+                then {
+                    permit;
+                    log {
+                        session-init;
+                        session-close;
+                    }
+                }
+            }
+            policy SMTP-CCTV {
+                match {
+                    source-address UK-LFMA00DC-002;
+                    destination-address SMTP-RELAY;
+                    application junos-smtp;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone DMZ-NY-WINTESS-NET to-zone untrust {
+            policy WITNESS {
+                match {
+                    source-address 192.168.91.2;
+                    destination-address [ 192.168.122.92 192.168.122.91 192.168.122.94 ];
+                    application [ junos-icmp-ping junos-smb ];
+                }
+                then {
+                    permit;
+                    log {
+                        session-init;
+                        session-close;
+                    }
+                }
+            }
+            policy MIKE-TEST {
+                match {
+                    source-address 192.168.91.6;
+                    destination-address 192.168.122.94;
+                    application junos-icmp-ping;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy WITNESS-PADB {
+                match {
+                    source-address EN-LFPA01DBS001;
+                    destination-address 192.168.122.94;
+                    application [ junos-icmp-ping junos-smb ];
+                }
+                then {
+                    permit;
+                    log {
+                        session-init;
+                        session-close;
+                    }
+                }
+            }
+            policy DMZ-WITNESS-SERVICE {
+                match {
+                    source-address DMZ-WITNESS-SERVERS;
+                    destination-address DMZ-FSW;
+                    application WITNESS-PORT-GROUP;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy DMZ_WITNESS_SUBNET-TO_RH_WITNESS_NET {
+                match {
+                    source-address DMZ_NY_WITNESS_SUBNET-192.168.91.0/25;
+                    destination-address R_H-WITNESS-NET_192.168.122.64/26;
+                    application any;
+                }
+                then {
+                    deny;
+                    log {
+                        session-init;
+                        session-close;
+                    }
+                }
+            }
+        }
+        from-zone untrust to-zone DMZ-NY-WINTESS-NET {
+            policy RH_WITNESS_NET-TO-DMZ_WITNESS_SUBNET {
+                match {
+                    source-address R_H-WITNESS-NET_192.168.122.64/26;
+                    destination-address DMZ_NY_WITNESS_SUBNET-192.168.91.0/25;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy DMZ-WITNESS-SERVICE {
+                match {
+                    source-address DMZ-FSW;
+                    destination-address DMZ-WITNESS-SERVERS;
+                    application [ TCP-3343 UDP-3343 ];
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone TFS-FG-WITNESS to-zone untrust {
+            policy WITNESS-TFS {
+                match {
+                    source-address TFS-UK-LFTF00DBS001-192.168.202.130;
+                    destination-address TFS-uk-lrtf00wit001-Witness-192.168.132.80;
+                    application [ junos-icmp-ping junos-smb ];
+                }
+                then {
+                    permit;
+                    log {
+                        session-init;
+                        session-close;
+                    }
+                }
+            }
+        }
+        from-zone REDIS-DMZ-PRIV to-zone untrust {
+            inactive: policy DMZ-WITNESS-REDIS-PFS {
+                match {
+                    source-address en-lfpfs1red002;
+                    destination-address [ EN-LRPFS1RED001 en-lrpfs1red002 ];
+                    application REDIS;
+                }
+                then {
+                    permit;
+                    log {
+                        session-init;
+                        session-close;
+                    }
+                }
+            }
+        }
+        from-zone untrust to-zone REDIS-DMZ-PRIV {
+            policy RH-WITNESS-REDIS-PFS {
+                match {
+                    source-address [ EN-LRPFS1RED001 en-lrpfs1red002 ];
+                    destination-address en-lfpfs1red002;
+                    application REDIS;
+                }
+                then {
+                    permit;
+                    log {
+                        session-init;
+                        session-close;
+                    }
+                }
+            }
+            policy MA1061006 {
+                match {
+                    source-address Dave_Wainright;
+                    destination-address SMG-Management-192.168.80.20;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+            inactive: policy Jump-Servers-to-REDIS {
+                match {
+                    source-address [ JumpServer-192.168.147.28 JumpServer-192.168.115.13 Dan-Kaminski192.168.153.234 Mark-Dowbiggin-192.168.153.116 Craig-Middlemas-192.168.153.138 Matthew-Bowles-192.168.153.201 Matt-Jackson-192.168.153.93 Mark-Howis-192.168.153.239 Barbara-Werner ];
+                    destination-address 192.168.80.17;
+                    application [ TCP-8443 junos-ssh junos-https ];
+                }
+                then {
+                    permit;
+                    log {
+                        session-init;
+                        session-close;
+                    }
+                }
+            }
+            policy RITM0015705 {
+                match {
+                    source-address [ UK-LFRD00RDI001 UK-LFRD00RDI002 ];
+                    destination-address SMG-Management-192.168.80.20;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone untrust to-zone IP-CCTV {
+            policy Hosted-Networks_to_IP-CCTV-Network {
+                description CR576958;
+                match {
+                    source-address Hosted-Networks;
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    permit;
+                    log {
+                        session-init;
+                        session-close;
+                    }
+                }
+            }
+            policy DC-TEAM_to_IP-CCTV-Network {
+                description CR576958;
+                match {
+                    source-address DC-Team;
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    permit;
+                    log {
+                        session-init;
+                        session-close;
+                    }
+                }
+            }
+            policy Nagios_to_IP-CCTV-Switches {
+                description Nagios-monitor;
+                match {
+                    source-address [ NAGIOS-CORE xen-hosting-cacti xen-hosting-cacti-2 hosted-cacti-2022 NAGIOS-CORE-2022 ];
+                    destination-address [ LFMBB03-SG200-00 LFMBB03-SG200-01 ];
+                    application [ junos-icmp-ping SNMP ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy Other-DC-Camera_to_IP-CCTV-Network {
+                match {
+                    source-address [ RH-CAMERA-Network EG-CAMERA-Network CCTV-Server-App-02 ];
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy SVN_to_CCTV-Switch {
+                match {
+                    source-address SVN;
+                    destination-address [ LFMBB03-SG200-00 LFMBB03-SG200-01 ];
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy Deny-All_to_IP-CCTV-Network {
+                description CR576958;
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    deny;
+                    log {
+                        session-init;
+                        session-close;
+                    }
+                }
+            }
+        }
+        from-zone untrust to-zone DC-Secure-VLAN {
+            policy DC-TEAM_to_DC-Secure-Vlan {
+                description CR576958;
+                match {
+                    source-address DC-Team;
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy Hosted-Networks-Secure-Vlan {
+                description CR576958;
+                match {
+                    source-address Hosted-Networks;
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy Patxon-ACCESS {
+                match {
+                    source-address [ vm-control02.emishosting.com vm-control01 ];
+                    destination-address [ Paxton1 Paxton2 ANPR-KIT ];
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy BC-FG-Diesal-GENNY-access {
+                match {
+                    source-address [ FG-EXT-CCTV-Server UK-LFMA00JUM005 ];
+                    destination-address FG-Diesal-GENERATOR-2000;
+                    application [ junos-http junos-https junos-icmp-ping TCP-502 UDP-502 ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy LT-Gates-Paxton {
+                match {
+                    source-address uk-lfma00acs001.ad.emisgroupplc.com;
+                    destination-address [ LT-paxton-gates SB-paxton-S1 ];
+                    application [ TCP-10001 junos-icmp-all TCP-9999 UDP-30718 ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy FG-MB-AIRCON {
+                match {
+                    source-address [ Andrew-North Andrew-North-192.168.152.132 Philippa-Steventon Stephen-Shaw Stephen-Shaw-192.168.152.21 Stephen-Shaw-10.139.2.62 Philippa-Steventon-192.168.234.106 Altaf-Razzaq Stephen-Shaw-192.168.224.35 Stephen-Shaw-192.168.153.162 Stephen-Shaw-192.168.248.75 Philippa-Steventon-192.168.224.17 Philippa-Steventon-192.168.153.63 Ahmed-Doghri-192.168.153.212 Philippa-Steventon-192.168.225.162 ];
+                    destination-address MB-Air-Con;
+                    application [ junos-http junos-icmp-ping junos-https ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy Deny-All_to_DC-Secure-Vlan {
+                description CR576958;
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    deny;
+                    log {
+                        session-init;
+                        session-close;
+                    }
+                }
+            }
+        }
+        from-zone DC-Secure-VLAN to-zone untrust {
+            policy MANAGEMENT {
+                match {
+                    source-address DC-Secure-Network;
+                    destination-address [ HIRTIUS uk-lfma00wus016.ad.emisgroupplc.com ];
+                    application [ junos-ntp TCP-8530 TCP-8014 ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy Patxon-ACCESS {
+                match {
+                    source-address [ Paxton1 Paxton2 ANPR-KIT ];
+                    destination-address vm-control01;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy Signin-screens {
+                match {
+                    source-address [ Paxton1 Paxton2 ANPR-KIT ];
+                    destination-address EM-LFIT01APP002;
+                    application junos-https;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy LT-Gates-Paxton {
+                match {
+                    source-address [ LT-paxton-gates SB-paxton-S1 ];
+                    destination-address uk-lfma00acs001.ad.emisgroupplc.com;
+                    application [ TCP-10001 junos-icmp-all TCP-9999 UDP-30718 ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy DNS {
+                match {
+                    source-address any;
+                    destination-address [ DNS1 DNS2 ];
+                    application [ junos-dns-udp junos-dns-tcp ];
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone DC-Secure-VLAN to-zone trust {
+            policy SMTP {
+                match {
+                    source-address DC-Secure-Network;
+                    destination-address SMTP-RELAY;
+                    application junos-smtp;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy FG-Security-System {
+                match {
+                    source-address FG-Security-System;
+                    destination-address any;
+                    application [ junos-dns-tcp junos-dns-udp junos-https UDP-50561 UDP-50562-50569 ];
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone IP-CCTV to-zone untrust {
+            policy NTP {
+                match {
+                    source-address IP-CCTV-Network;
+                    destination-address HIRTIUS;
+                    application junos-ntp;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy FG_Server_EG_Camera {
+                match {
+                    source-address CCTV-Server;
+                    destination-address EG-CAMERA-Network;
+                    application [ junos-smb junos-icmp-ping TCP-139 ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy CCTV-Switch_to_SVN {
+                match {
+                    source-address [ LFMBB03-SG200-00 LFMBB03-SG200-01 ];
+                    destination-address SVN;
+                    application junos-tftp;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy SR1062159 {
+                match {
+                    source-address [ CCTV-Server CCTV-Server-192.168.33.174 ];
+                    destination-address [ Hosting-LS-WSUS Hosting-LF-WSUS Hosting-LS-AV Hosting-LS-WSUS-44.128.219.55 Hosting-LF-WSUS-44.128.203.55 ];
+                    application [ TCP-8014 TCP-8530 ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy BC-LS-Diesal-GENNY-access {
+                match {
+                    source-address CCTV-Server;
+                    destination-address LS-Diesal-GENERATOR-2000;
+                    application [ junos-http junos-https junos-icmp-ping TCP-502 UDP-502 ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy RITM0110157 {
+                match {
+                    source-address CCTV-Server-192.168.33.174;
+                    destination-address [ PROXY-SERVER PROXY-SERVER-2 ];
+                    application [ junos-icmp-ping junos-http junos-https TCP-3128 TCP-8000 ];
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone untrust to-zone untrust {
+            policy ununtrust-to-untrust {
+                match {
+                    source-address any;
+                    destination-address neoteris;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone MERAKI-WIFI-MGT to-zone trust {
+            policy MERAKI-WIFI-MGT-OUT {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application [ OUTBOUND-PORTS OUTBOUND-PORTS-Meraki-Cloud ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy MERAKI-GUEST {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone MERAKI-WIFI-MGT to-zone untrust {
+            policy MERAKI-WIFI-MGT-DNS {
+                match {
+                    source-address any;
+                    destination-address [ DNS1 DNS2 ];
+                    application [ junos-dns-udp junos-dns-tcp ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy MERAKI-WIFI-MGT_RADIUS {
+                match {
+                    source-address any;
+                    destination-address [ FG-RADIUS-NPS-192.168.147.129 AH-RADIUS-NPS-192.168.72.88 SH-RADIUS-NPS-192.168.115.66 FG-RADIUS-ISE_PSN-192.168.147.220 EG-RADIUS-ISE_PSN-192.168.115.124 ];
+                    application [ TCP-1812 UDP-1812 UDP-1813 ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy EmisMobile-Access {
+                match {
+                    source-address any;
+                    destination-address emismobile;
+                    application [ junos-https TCP-33966 ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy MERAKI-WIFI-MGT_SIEM {
+                match {
+                    source-address any;
+                    destination-address [ FG-LOGSTASH-192.168.147.199 GrayLog_10.139.48.19 ];
+                    application [ junos-icmp-ping UDP-11518 UDP-11517 junos-syslog raw_syslog raw_syslog_tcp ];
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone MERAKI-WIFI-BYOD to-zone untrust {
+            policy MERAKI-WIFI-BYOD-OUT {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application OUTBOUND-PORTS;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone MERAKI-WIFI-MEDIA to-zone untrust {
+            policy MERAKI-WIFI-MEDIA-OUT {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application OUTBOUND-PORTS;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy EmisMobile-Access {
+                match {
+                    source-address any;
+                    destination-address emismobile;
+                    application [ junos-https TCP-33966 ];
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone MERAKI-WIFI-CORPORATE to-zone untrust {
+            policy MERAKI-WIFI-CORPORATE-OUT {
+                match {
+                    source-address any;
+                    destination-address [ 10.139.0.0-16 192.168.0.0-16 voip voip2 neoteris emissonarqube-44.128.166.102 ];
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy EmisMobile-Access {
+                match {
+                    source-address any;
+                    destination-address emismobile;
+                    application [ junos-https TCP-33966 ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy ON-PREM-to-AZURE-File-Share-CHG0091962 {
+                match {
+                    source-address any;
+                    destination-address GIT-AZURE-File-Share-100.112.34.128/27;
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy ON-PREM-to-AZURE-GIT {
+                match {
+                    source-address any;
+                    destination-address [ AZURE-GIT-MEDS-SUPPORT-100.112.37.160/27 GIT-AZURE-Documation-100.112.37.128/27 ];
+                    application [ junos-http junos-https DOCUMATION-PORTS ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy ON-PREM-to-AZURE-GIT-PATCH-CONTROL {
+                match {
+                    source-address any;
+                    destination-address AZURE-GIT-PATCH-CONTROL-100.112.36.144/29;
+                    application [ UDP-1434 TCP-1433 ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy ON-PREM-to-AZURE-Dynamix-AX-CHG0092331 {
+                match {
+                    source-address any;
+                    destination-address GIT-AZURE-Dynamix-AX-100.112.36.224/27;
+                    application [ junos-http junos-https ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy ON-PREM-to-AZURE-TFS-CHG0092366 {
+                match {
+                    source-address any;
+                    destination-address [ GIT-AZURE-TFS-100.112.37.64/28 GIT-AZURE-TFS-100.112.37.80/28 ];
+                    application [ junos-http junos-https TCP-8080 ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy ON-PREM-to-AZURE-MS-SQL-CHG0092653 {
+                match {
+                    source-address any;
+                    destination-address GIT-AZURE-MS-SQL-100.112.37.32/28;
+                    application MS-SQL-PORT-GROUP;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy ON-PREM-to-AZURE-Release-Calendar- {
+                match {
+                    source-address any;
+                    destination-address GIT-AZURE-Release-Calendar-100.112.36.176/29;
+                    application junos-http;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy ON-PREM-to-AZURE-SUPPORT-TOOL {
+                match {
+                    source-address any;
+                    destination-address GIT-AZURE-SUPPORT-TOOL-100.112.36.208/29;
+                    application SUPPORT-TOOL-PORT-GROUP;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy WIFI-CORP-TO-AWS-DEVTEST {
+                match {
+                    source-address any;
+                    destination-address [ AWS-DEVTEST-100.64.26.0/23 AWS-DEVTEST-100.64.24.0/24 AWS-DEVTEST-100.64.30.0/24 ];
+                    application DEVTEST-AWS-PORT-GROUP;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone MERAKI-WIFI-CORPORATE to-zone trust {
+            policy OUTBOUND-Access {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone untrust to-zone MERAKI-WIFI-MGT {
+            policy Nagios_to_FG-Meraki-AP {
+                description nagios-monitor;
+                match {
+                    source-address [ NAGIOS-CORE NAGIOS-CORE-2022 ];
+                    destination-address any;
+                    application [ junos-icmp-all SNMP ];
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone IP-CCTV to-zone DC-Secure-VLAN {
+            policy BC-FG-Diesal-GENNY-access {
+                match {
+                    source-address CCTV-Server;
+                    destination-address FG-Diesal-GENERATOR-2000;
+                    application [ junos-http junos-https junos-icmp-ping TCP-502 UDP-502 ];
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone MERAKI-WIFI-CORPORATE to-zone DC-Secure-VLAN {
+            policy FG-MB-AIRCON {
+                match {
+                    source-address [ Andrew-North-192.168.224.249 Stephen-Shaw-192.168.224.35 Philippa-Steventon-192.168.224.17 Philippa-Steventon-192.168.153.63 Ahmed-Doghri-192.168.153.212 Philippa-Steventon-192.168.225.162 Ahmed-Doghri-WiFi Philippa-Steventon-SH-WiFi ];
+                    destination-address MB-Air-Con;
+                    application [ junos-http junos-icmp-ping junos-https ];
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone trust to-zone DC-Secure-VLAN {
+            policy FG-MB-AIRCON {
+                match {
+                    source-address Philippa-Steventon-SH-WiFi;
+                    destination-address MB-Air-Con;
+                    application [ junos-http junos-icmp-ping junos-https ];
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone IP-CCTV to-zone trust {
+            policy RITM0110157 {
+                match {
+                    source-address CCTV-Server-192.168.33.174;
+                    destination-address any;
+                    application [ junos-icmp-ping junos-http junos-https TCP-3128 TCP-8000 ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy CHG0142136 {
+                match {
+                    source-address CCTV-Server-192.168.33.174;
+                    destination-address NESSUS-44.128.200.77;
+                    application TCP-8834;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone trust to-zone SB-FILM-STUDIO {
+            policy EGA3-RANGE_to_SB-FILM-STUDIO {
+                description CHG0114306;
+                match {
+                    source-address EGA3-CLIENT-RANGE-GROUP;
+                    destination-address any;
+                    application [ junos-icmp-all TCP-3389 ];
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone SB-FILM-STUDIO to-zone trust {
+            policy SB-FILM-STUDIO_to_GOOGLE-DNS {
+                description CHG0114306;
+                match {
+                    source-address any;
+                    destination-address [ Google-DNS1 Google-DNS2 ];
+                    application [ junos-dns-udp junos-dns-tcp ];
+                }
+                then {
+                    permit;
+                }
+            }
+            policy SB-FILM-STUDIO_to_WEB-TRAFFIC {
+                description CHG0114306;
+                match {
+                    source-address any;
+                    destination-address any;
+                    application [ junos-http junos-https ];
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone DMZ-NY-WINTESS-NET to-zone HOSTED-AWS-WITNESS {
+            policy DMZ-WITNESS-SERVICE {
+                match {
+                    source-address DMZ-WITNESS-SERVERS;
+                    destination-address [ AWS-DMZ-FSW-100.80.9.69/32 AWS-DMZ-FSW-100.80.9.225/32 AWS-DMZ-FSW-100.80.9.229/32 AWS-DMZ-FSW-100.80.9.121/32 AWS-DMZ-FSW-100.80.9.140/32 ];
+                    application junos-smb;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone trust to-zone IP-CCTV {
+            policy CHG0142136 {
+                match {
+                    source-address NESSUS-44.128.200.77;
+                    destination-address CCTV-Server-192.168.33.174;
+                    application TCP-8834;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+    }
+    zones {
+        security-zone TFS-FG-WITNESS {
+            address-book {
+                address TFS-UK-LFTF00DBS001-192.168.202.130 192.168.202.130/32;
+            }
+            interfaces {
+                reth2.274;
+            }
+        }
+        security-zone trust {
+            address-book {
+                address SV-DEPLOY2 10.139.43.184/32;
+                address ASC-PMA01SQL02_192.168.81.83 192.168.81.83/32;
+                address MIUK-DMZ-DC01 192.168.80.30/32;
+                address SMTP-RELAY 192.168.84.251/32;
+                address AU-MCMA00DC-001 10.8.1.16/32;
+                address 192.168.80.29 192.168.80.29/32;
+                address EGA3_Client_Range 44.128.241.0/24;
+                address Glaswgow_LAN 192.168.121.0/28;
+                address Glaswgow_wifi_corp 192.168.121.128/25;
+                address Rxdmz01-192.168.80.31 192.168.80.31/32;
+                address EG-MERAKI-Corp 192.168.234.0/23;
+                address Microsoft-Teams_13.70.151.216/32 13.70.151.216/32;
+                address Microsoft-Teams_13.71.127.197/32 13.71.127.197/32;
+                address Microsoft-Teams_13.72.245.115/32 13.72.245.115/32;
+                address Microsoft-Teams_13.73.1.120/32 13.73.1.120/32;
+                address Microsoft-Teams_13.75.126.169/32 13.75.126.169/32;
+                address Microsoft-Teams_13.89.240.113/32 13.89.240.113/32;
+                address Microsoft-Teams_13.107.3.0/24 13.107.3.0/24;
+                address Microsoft-Teams_13.107.64.0/18 13.107.64.0/18;
+                address Microsoft-Teams_51.140.155.234/32 51.140.155.234/32;
+                address Microsoft-Teams_51.140.203.190/32 51.140.203.190/32;
+                address Microsoft-Teams_51.141.51.76/32 51.141.51.76/32;
+                address Microsoft-Teams_52.112.0.0/14 52.112.0.0/14;
+                address Microsoft-Teams_52.163.126.215/32 52.163.126.215/32;
+                address Microsoft-Teams_52.170.21.67/32 52.170.21.67/32;
+                address Microsoft-Teams_52.172.185.18/32 52.172.185.18/32;
+                address Microsoft-Teams_52.178.94.2/32 52.178.94.2/32;
+                address Microsoft-Teams_52.178.161.139/32 52.178.161.139/32;
+                address Microsoft-Teams_52.228.25.96/32 52.228.25.96/32;
+                address Microsoft-Teams_52.238.119.141/32 52.238.119.141/32;
+                address Microsoft-Teams_52.242.23.189/32 52.242.23.189/32;
+                address Microsoft-Teams_52.244.160.207/32 52.244.160.207/32;
+                address Microsoft-Teams_104.215.11.144/32 104.215.11.144/32;
+                address Microsoft-Teams_104.215.62.195/32 104.215.62.195/32;
+                address Microsoft-Teams_138.91.237.237/32 138.91.237.237/32;
+                address DATTO-1 52.17.242.187/32;
+                address DATTO-2 52.16.205.224/32;
+                address DATTO-3 52.17.157.63/32;
+                address DATTO-52.0.0.0 52.0.0.0/8;
+                address EGA3-CLIENT-RANGE-1 44.128.243.0/24;
+                address EGA3_CLIENT_RANGE-Watford 44.128.242.64/26;
+                address 192.168.80.15 192.168.80.15/32;
+                address EGA3_Client_Range_expansion 44.128.244.0/22;
+                address DMZSEP01_192.168.82.15 192.168.82.15/32;
+                address Zabbix-192.168.147.37 192.168.147.37/32;
+                address Philippa-Steventon-SH-WiFi 192.168.235.104/32;
+                address Google-DNS1 8.8.8.8/32;
+                address Google-DNS2 8.8.4.4/32;
+                address VPN-CLIENT-FG-RANGE 44.128.83.0/24;
+                address VPN-CLIENT-FG-RANGE2 44.128.82.0/24;
+                address NESSUS-44.128.200.77 44.128.200.77/32;
+                address-set Microsoft-Teams {
+                    address Microsoft-Teams_13.70.151.216/32;
+                    address Microsoft-Teams_13.71.127.197/32;
+                    address Microsoft-Teams_13.72.245.115/32;
+                    address Microsoft-Teams_13.73.1.120/32;
+                    address Microsoft-Teams_13.75.126.169/32;
+                    address Microsoft-Teams_13.89.240.113/32;
+                    address Microsoft-Teams_13.107.3.0/24;
+                    address Microsoft-Teams_13.107.64.0/18;
+                    address Microsoft-Teams_51.140.155.234/32;
+                    address Microsoft-Teams_51.140.203.190/32;
+                    address Microsoft-Teams_51.141.51.76/32;
+                    address Microsoft-Teams_52.112.0.0/14;
+                    address Microsoft-Teams_52.163.126.215/32;
+                    address Microsoft-Teams_52.170.21.67/32;
+                    address Microsoft-Teams_52.172.185.18/32;
+                    address Microsoft-Teams_52.178.94.2/32;
+                    address Microsoft-Teams_52.178.161.139/32;
+                    address Microsoft-Teams_52.228.25.96/32;
+                    address Microsoft-Teams_52.238.119.141/32;
+                    address Microsoft-Teams_52.242.23.189/32;
+                    address Microsoft-Teams_52.244.160.207/32;
+                    address Microsoft-Teams_104.215.11.144/32;
+                    address Microsoft-Teams_104.215.62.195/32;
+                    address Microsoft-Teams_138.91.237.237/32;
+                }
+                address-set DATTO-Group {
+                    address DATTO-1;
+                    address DATTO-2;
+                    address DATTO-3;
+                    address DATTO-52.0.0.0;
+                }
+                address-set EGA3-CLIENT-RANGE-GROUP {
+                    address EGA3_Client_Range;
+                    address EGA3-CLIENT-RANGE-1;
+                    address EGA3_CLIENT_RANGE-Watford;
+                    address EGA3_Client_Range_expansion;
+                    address VPN-CLIENT-FG-RANGE;
+                    address VPN-CLIENT-FG-RANGE2;
+                }
+            }
+            host-inbound-traffic {
+                system-services {
+                    all;
+                }
+                protocols {
+                    all;
+                }
+            }
+            interfaces {
+                reth1.0;
+            }
+        }
+        security-zone untrust {
+            address-book {
+                address R_H-WITNESS-NET_192.168.122.64/26 192.168.122.64/26;
+                address 192.168.122.91 192.168.122.91/32;
+                address 192.168.122.92 192.168.122.92/32;
+                address 192.168.122.94 192.168.122.94/32;
+                address TFS-uk-lrtf00wit001-Witness-192.168.132.80 192.168.132.80/32;
+                address EN-LRPFS1RED001 192.168.122.119/32;
+                address PCSPATCH 192.168.81.39/32;
+                address ASC-PMA01SQL01_192.168.199.128 192.168.199.128/32;
+                address Altaf-Razzaq 192.168.153.180/32;
+                address Altaf-Razzaq-PC 10.139.45.226/32;
+                address MIKE-MORRIS-10.139.44.163 10.139.44.163/32;
+                address MISRVDC03 192.168.17.135/32;
+                address David-Lazenby 192.168.153.60/32;
+                address NAGIOS-CORE 10.139.2.16/32;
+                address Paul-Evans 192.168.153.58/32;
+                address Craig-Allington 192.168.153.181/32;
+                address Matthew-Magson 192.168.153.129/32;
+                address SHAUNM 192.168.153.128/32;
+                address Paul-Evans-10.139.47.131 10.139.47.131/32;
+                address DC-Monotoring-Screen 192.168.153.139/32;
+                address Nigel-Sharp 192.168.153.146/32;
+                address xen-hosting-cacti 10.139.2.17/32;
+                address RH-CAMERA-Network 192.168.34.32/28;
+                address HIRTIUS 10.139.2.4/32;
+                address EG-CAMERA-Network 192.168.34.0/27;
+                address Nigel-Sharp-Docking-station 192.168.153.73/32;
+                address neoteris 212.240.194.173/32;
+                address UKLSMGR18 192.168.147.254/32;
+                address UKLSMGR02 192.168.147.4/32;
+                address UKLSMGR03 10.139.49.86/32;
+                address UKLSWDS25534 192.168.147.8/32;
+                address UKLSMGR14 192.168.147.46/32;
+                address EA204364 192.168.153.115/32;
+                address EA205365 192.168.152.105/32;
+                address vm-control02.emishosting.com 44.1.162.46/32;
+                address vm-control01 10.139.46.130/32;
+                address FABDOM-AD01-44.1.168.12 44.1.168.12/32;
+                address FABDOM-AD02-44.1.168.16 44.1.168.16/32;
+                address Peter-Leverton 192.168.153.236/32;
+                address SVN 10.139.2.7/32;
+                address Amit_Patel 192.168.153.227/32;
+                address SHAUNM-LAPTOP 192.168.153.160/32;
+                address Barbara-Werner 192.168.153.45/32;
+                address Hosting-LS-WSUS 44.128.219.54/32;
+                address Hosting-LF-WSUS 44.128.203.53/32;
+                address Hosting-LS-AV 192.168.190.98/32;
+                address Ian-Gill 192.168.153.170/32;
+                address BrynL 192.168.153.98/32;
+                address Dave_Wainright 192.168.152.170/32;
+                address JumpServer-192.168.147.28 192.168.147.28/32;
+                address JumpServer-192.168.115.13 192.168.115.13/32;
+                address 192.168.147.25 192.168.147.25/32;
+                address 10.139.49.180 10.139.49.180/32;
+                address 192.168.80.30 192.168.80.30/32;
+                address Dan-Kaminski192.168.153.234 192.168.153.234/32;
+                address Mark-Dowbiggin-192.168.153.116 192.168.153.116/32;
+                address Craig-Middlemas-192.168.153.138 192.168.153.138/32;
+                address Matthew-Bowles-192.168.153.201 192.168.153.201/32;
+                address Matt-Jackson-192.168.153.93 192.168.153.93/32;
+                address Mark-Howis-192.168.153.239 192.168.153.239/32;
+                address vm-selip02 192.168.147.18/32;
+                address SV-EMIS06_CNTRDOC 192.168.147.60/32;
+                address uklsmgr14 192.168.147.46/32;
+                address Abbas-PC 192.168.153.27/32;
+                address Hussein-James 192.168.153.32/32;
+                address Hussein-James-Desktop 192.168.153.85/32;
+                address en-lrpfs1red002 192.168.122.124/32;
+                address uk-lfma00prn001 192.168.147.13/32;
+                address UK-BAMA00PRN001 192.168.72.60/32;
+                address uk-lsma00prn001 192.168.115.8/32;
+                address UK-WTMA00PRN001 192.168.4.210/32;
+                address DMZ-FSW 192.168.61.119/32;
+                address EN-LAPFS01RED02 192.168.61.95/32;
+                address Rxleeds01-10.139.49.105 10.139.49.105/32;
+                address sv-selip02 192.168.147.18/32;
+                address emisdocs 192.168.147.179/32;
+                address sv-admin3 10.139.48.126/32;
+                address DNS1 192.168.147.4/32;
+                address DNS2 192.168.147.254/32;
+                address AH-RADIUS-NPS-192.168.72.88 192.168.72.88/32;
+                address FG-RADIUS-NPS-192.168.147.129 192.168.147.129/32;
+                address 10.139.0.0-16 10.139.0.0/16;
+                address 192.168.0.0-16 192.168.0.0/16;
+                address voip 1.1.96.0/24;
+                address voip2 1.1.99.0/24;
+                address EN-LAPFS01RED01 192.168.61.94/32;
+                address emismobile 185.13.72.138/31;
+                address Navid-Hussein 192.168.153.94/32;
+                address Barbara-Werner-PC 192.168.49.0/32;
+                address Nigel-Sharp-pc 192.168.153.50/32;
+                address Craig-Allington-192.168.49 192.168.49.0/32;
+                address Craig-Allington-192.168.153.49 192.168.153.49/32;
+                address EA205365-192.168.152.17 192.168.152.17/32;
+                address BrynL-192.168.153.240 192.168.153.240/32;
+                address Abbas-PC-192.168.153.192 192.168.153.192/32;
+                address emissonarqube-44.128.166.102 44.128.166.102/32;
+                address Jumpbox-192.168.147.28 192.168.147.28/32;
+                address LS-Diesal-GENERATOR-2000 192.168.35.190/32;
+                address FG-EXT-CCTV-Server 192.168.35.51/32;
+                address Mickesh_Fox_PC 192.168.153.150/32;
+                address 192.168.4.211 192.168.4.211/32;
+                address Uk-lfdh00dbs002 192.168.147.14/32;
+                address UK-LFDH00DBS011 192.168.147.34/32;
+                address emisdocs-2 192.168.72.111/32;
+                address emisdocs-3 192.168.72.109/32;
+                address vm-dhi5 192.168.147.38/32;
+                address Craig-Allington-10.141.10.123 10.141.10.123/32;
+                address Hosted-Jump-Server-1-192.168.147.28 192.168.147.28/32;
+                address Hosted-Jump-Server-2-192.168.115.13 192.168.115.13/32;
+                address vm-tfsds 192.168.173.74/32;
+                address Amit_Patel-Egton 10.141.10.70/32;
+                address Amit_Patel-MB 192.168.144.114/32;
+                address vm-dhisimchange 192.168.147.167/32;
+                address vm-dhisimcont 192.168.147.168/32;
+                address vm-mod01 10.139.45.132/32;
+                address SHAREDDB 192.168.173.172/32;
+                address TET-2012r2dc-22 192.168.173.119/32;
+                address UK-LFRD00RDI001 192.168.147.16/32;
+                address UK-LFRD00RDI002 192.168.147.20/32;
+                address CORE-BOL-VPC 192.168.72.9/32;
+                address CORE-BOL-VPC02 192.168.72.10/32;
+                address tet-2012r2dc-22 192.168.173.119/32;
+                address 10.139.48.254 10.139.48.254/32;
+                address tet-2012r2dc-12-192.168.175.251 192.168.175.251/32;
+                address TET-Win8_1-10.DevTest-192.168.173.169 192.168.173.169/32;
+                address 192.168.173.147 192.168.173.147/32;
+                address TET-12CONAPP-03-192.168.173.170 192.168.173.170/32;
+                address TET-2012DC-05-192.168.173.89 192.168.173.89/32;
+                address TET-2012DC-02-192.168.173.141 192.168.173.141/32;
+                address TET-2012DC-12-192.168.174.70 192.168.174.70/32;
+                address TET-2012DC-14-192.168.173.83 192.168.173.83/32;
+                address Andrew-North-192.168.152.132 192.168.152.132/32;
+                address WOPR 192.168.72.43/32;
+                address EM-LFIT01APP002 44.128.200.133/32;
+                address uk-lfma00wus016.ad.emisgroupplc.com 192.168.147.5/32;
+                address CCTV-Server-App-02 192.168.34.26/32;
+                address uk-lfma00acs001.ad.emisgroupplc.com 192.168.147.78/32;
+                address Hosting-LS-WSUS-44.128.219.55 44.128.219.55/32;
+                address Hosting-LF-WSUS-44.128.203.55 44.128.203.55/32;
+                address cdb-1 10.139.49.99/32;
+                address cdb-2 10.141.10.32/32;
+                address WATFORD_SHARE-1 192.168.4.165/32;
+                address WATFORD_SHARE-2 192.168.4.166/32;
+                address WATFORD_SHARE-3 192.168.4.181/32;
+                address WATFORD_SHARE-4 192.168.4.182/32;
+                address WATFORD_SHARE-5 192.168.4.101/32;
+                address WATFORD_SHARE-6 192.168.5.94/32;
+                address new-patchdb2 192.168.147.95/32;
+                address sv-deploy4 192.168.147.64/32;
+                address sv-escl 192.168.147.79/32;
+                address uk-lfma00pcs001 192.168.147.132/32;
+                address new-patchdb3 10.139.45.236/32;
+                address sv-deploy2 10.139.43.184/32;
+                address sv-emisweb 10.139.42.57/32;
+                address sv-esp 10.139.41.70/32;
+                address vm-ewduat01 10.139.45.171/32;
+                address sv-deploy3 10.139.42.189/32;
+                address sv-pcscoding 10.139.42.153/32;
+                address sv-prerel 10.139.47.188/32;
+                address vm-cdbsql 10.139.44.200/32;
+                address vm-pcsscot 10.139.42.187/32;
+                address SV-CDB07 10.139.49.99/32;
+                address SV-CDB08 10.141.10.17/32;
+                address SV-EMIS12 192.168.115.4/32;
+                address 192.168.176.79 192.168.176.79/32;
+                address UK-BAMA00VPC001 192.168.72.118/32;
+                address WATFORD_SHARE-7 192.168.4.146/32;
+                address Andrew-North 10.141.10.236/32;
+                address Philippa-Steventon 10.141.10.167/32;
+                address Philippa-Steventon-192.168.234.106 192.168.234.106/32;
+                address Stephen-Shaw 10.141.10.223/32;
+                address Stephen-Shaw-192.168.152.21 192.168.152.21/32;
+                address Stephen-Shaw-10.139.2.62 10.139.2.62/32;
+                address Stephen-Shaw-192.168.224.35 192.168.224.35/32;
+                address uklfdm00app001 192.168.147.142/32;
+                address Camis-Server-192.168.59.38 192.168.59.38/32;
+                address uk-lfit00app003 192.168.147.197/32;
+                address tet-2012R2DC-08-192.168.175.35 192.168.175.35/32;
+                address xen-hosting-cacti-2 10.139.2.22/32;
+                address OnlineConsult-51.179.206.178 51.179.206.178/32;
+                address hosted-cacti-2022 10.139.54.54/32;
+                address Stephen-Shaw-192.168.153.162 192.168.153.162/32;
+                address NAGIOS-CORE-2022 10.139.2.200/32;
+                address AZURE-GIT-CIDR_100.112.32.0/20 100.112.32.0/20;
+                address GIT-AZURE-File-Share-100.112.34.128/27 100.112.34.128/27;
+                address AZURE-GIT-MEDS-SUPPORT-100.112.37.160/27 100.112.37.160/27;
+                address GIT-AZURE-Documation-100.112.37.128/27 100.112.37.128/27;
+                address AZURE-GIT-PATCH-CONTROL-100.112.36.144/29 100.112.36.144/29;
+                address GIT-AZURE-Dynamix-AX-100.112.36.224/27 100.112.36.224/27;
+                address GIT-AZURE-TFS-100.112.37.64/28 100.112.37.64/28;
+                address GIT-AZURE-MS-SQL-100.112.37.32/28 100.112.37.32/28;
+                address GIT-AZURE-TFS-100.112.37.80/28 100.112.37.80/28;
+                address Stephen-Shaw-192.168.248.75 192.168.248.75/32;
+                address GIT-AZURE-Release-Calendar-100.112.36.176/29 100.112.36.176/29;
+                address GIT-AZURE-SUPPORT-TOOL-100.112.36.208/29 100.112.36.208/29;
+                address AWS-DEVTEST-100.64.26.0/23 100.64.26.0/23;
+                address AWS-DEVTEST-100.64.24.0/24 100.64.24.0/24;
+                address AWS-DEVTEST-100.64.30.0/24 100.64.30.0/24;
+                address UK-LFSU00CAM001 192.168.147.238/32;
+                address Philippa-Steventon-192.168.224.17 192.168.224.17/32;
+                address Ahmed-Doghri 192.168.153.212/32;
+                address Camis-Server2-192.168.59.49 192.168.59.49/32;
+                address Philippa-Steventon-192.168.153.63 192.168.153.63/32;
+                address Ahmed-Doghri-192.168.153.212 192.168.153.212/32;
+                address Philippa-Steventon-192.168.225.162 192.168.225.162/32;
+                address PROXY-SERVER 10.139.2.37/32;
+                address PROXY-SERVER-2 10.139.2.36/32;
+                address UK-LFMA00JUM005 192.168.147.190/32;
+                address UK-LFMA00JUM005-192.168.147.190 192.168.147.190/32;
+                address UK-LFMA00JUM005-192.168.115.190 192.168.115.190/32;
+                address emisdocs-192.168.147.217 192.168.147.217/32;
+                address FG-LOGSTASH-192.168.147.199 192.168.147.199/32;
+                address UK-LFMA00DC-002 192.168.35.175/32;
+                address SH-RADIUS-NPS-192.168.115.66 192.168.115.66/32;
+                address FG-RADIUS-ISE_PSN-192.168.147.220 192.168.147.220/32;
+                address EG-RADIUS-ISE_PSN-192.168.115.124 192.168.115.124/32;
+                address GrayLog_10.139.48.19 10.139.48.19/32;
+                address 192.168.147.10_32 192.168.147.10/32;
+                address 192.168.132.9_32 192.168.132.9/32;
+                address-set Hosted-Networks {
+                    address Altaf-Razzaq;
+                    address Altaf-Razzaq-PC;
+                    address MIKE-MORRIS-10.139.44.163;
+                    address SHAUNM;
+                    address SHAUNM-LAPTOP;
+                    address Barbara-Werner;
+                    address Abbas-PC;
+                    address Hussein-James;
+                    address Hussein-James-Desktop;
+                    address Barbara-Werner-PC;
+                    address BrynL-192.168.153.240;
+                    address Abbas-PC-192.168.153.192;
+                    address Mickesh_Fox_PC;
+                    address Ahmed-Doghri;
+                }
+                address-set DC-Team {
+                    address David-Lazenby;
+                    address Paul-Evans;
+                    address Craig-Allington;
+                    address Matthew-Magson;
+                    address Paul-Evans-10.139.47.131;
+                    address DC-Monotoring-Screen;
+                    address Nigel-Sharp;
+                    address Nigel-Sharp-Docking-station;
+                    address Altaf-Razzaq;
+                    address EA204364;
+                    address EA205365;
+                    address Peter-Leverton;
+                    address Amit_Patel;
+                    address SHAUNM-LAPTOP;
+                    address SHAUNM;
+                    address Barbara-Werner;
+                    address Navid-Hussein;
+                    address Nigel-Sharp-pc;
+                    address Craig-Allington-192.168.49;
+                    address Craig-Allington-192.168.153.49;
+                    address EA205365-192.168.152.17;
+                    address Jumpbox-192.168.147.28;
+                    address Craig-Allington-10.141.10.123;
+                    address Hosted-Jump-Server-1-192.168.147.28;
+                    address Hosted-Jump-Server-2-192.168.115.13;
+                    address Amit_Patel-Egton;
+                    address Amit_Patel-MB;
+                    address Andrew-North-192.168.152.132;
+                    address UK-LFMA00JUM005-192.168.147.190;
+                    address UK-LFMA00JUM005-192.168.115.190;
+                }
+                address-set Corporate-Windows-Server-2008-Clients {
+                    address new-patchdb2;
+                    address sv-deploy4;
+                    address sv-escl;
+                    address uk-lfma00pcs001;
+                    address new-patchdb3;
+                    address sv-deploy2;
+                    address sv-emisweb;
+                    address sv-esp;
+                    address vm-ewduat01;
+                    address sv-deploy3;
+                    address sv-pcscoding;
+                    address sv-prerel;
+                    address vm-cdbsql;
+                    address vm-pcsscot;
+                    address SV-CDB07;
+                    address SV-CDB08;
+                    address SV-EMIS12;
+                }
+            }
+            screen untrust-screen;
+            host-inbound-traffic {
+                system-services {
+                    all;
+                }
+                protocols {
+                    all;
+                }
+            }
+            interfaces {
+                reth0.0;
+            }
+        }
+        security-zone DMZ-NY-WINTESS-NET {
+            address-book {
+                address DMZ_NY_WITNESS_SUBNET-192.168.91.0/25 192.168.91.0/25;
+                address 192.168.91.2 192.168.91.2/32;
+                address 192.168.91.5 192.168.91.5/32;
+                address 192.168.91.6 192.168.91.6/32;
+                address EN-LFPA01DBS001 192.168.91.4/32;
+                address-set DMZ-WITNESS-SERVERS {
+                    address 192.168.91.2;
+                    address EN-LFPA01DBS001;
+                }
+            }
+            interfaces {
+                reth2.2582;
+            }
+        }
+        security-zone REDIS-DMZ-PRIV {
+            address-book {
+                address EN-LFPFS1RED001 192.168.80.16/32;
+                address SMG-Management-192.168.80.20 192.168.80.20/32;
+                address 192.168.80.17 192.168.80.17/32;
+                address en-lfpfs1red002 192.168.80.51/32;
+                address en-lspfs1red002 192.168.80.52/32;
+            }
+            interfaces {
+                reth2.2562 {
+                    host-inbound-traffic {
+                        system-services {
+                            ping;
+                        }
+                    }
+                }
+            }
+        }
+        security-zone DC-Secure-VLAN {
+            address-book {
+                address DC-Secure-Network 192.168.33.0/25;
+                address Paxton1 192.168.33.44/32;
+                address Paxton2 192.168.33.45/32;
+                address FG-Diesal-GENERATOR-2000 192.168.33.55/32;
+                address ANPR-1 192.168.33.51/32;
+                address ANPR-2 192.168.33.52/32;
+                address ANPR-3 192.168.33.53/32;
+                address ANPR-4 192.168.33.54/32;
+                address ANPR-5 192.168.33.55/32;
+                address ANPR-6 192.168.33.56/32;
+                address ANPR-7 192.168.33.57/32;
+                address ANPR-8 192.168.33.58/32;
+                address ANPR-9 192.168.33.59/32;
+                address EM-LFMBB02-DCM001 192.168.33.60/32;
+                address SB-paxton-S1 192.168.33.61/32;
+                address LT-paxton-gates 192.168.33.62/32;
+                address MB-Air-Con 192.168.33.66/32;
+                address FG-Security-System 192.168.33.65/32;
+                address-set ANPR-KIT {
+                    address ANPR-1;
+                    address ANPR-2;
+                    address ANPR-3;
+                    address ANPR-4;
+                    address ANPR-5;
+                    address ANPR-6;
+                    address ANPR-7;
+                    address ANPR-8;
+                    address ANPR-9;
+                }
+            }
+            host-inbound-traffic {
+                system-services {
+                    ping;
+                }
+            }
+            interfaces {
+                reth4.333;
+            }
+        }
+        security-zone IP-CCTV {
+            address-book {
+                address IP-CCTV-Network 192.168.33.128/25;
+                address LFMBB03-SG200-00 192.168.33.130/32;
+                address LFMBB03-SG200-01 192.168.33.131/32;
+                address CCTV-Server 192.168.33.253/32;
+                address CCTV-Server-192.168.33.174 192.168.33.174/32;
+            }
+            host-inbound-traffic {
+                system-services {
+                    ping;
+                }
+            }
+            interfaces {
+                reth4.334;
+            }
+        }
+        security-zone MERAKI-WIFI-MGT {
+            interfaces {
+                reth4.500 {
+                    host-inbound-traffic {
+                        system-services {
+                            ping;
+                        }
+                    }
+                }
+            }
+        }
+        security-zone MERAKI-WIFI-CORPORATE {
+            address-book {
+                address Andrew-North-192.168.224.249 192.168.224.249/32;
+                address Stephen-Shaw-192.168.224.35 192.168.224.35/32;
+                address Philippa-Steventon-192.168.224.17 192.168.224.17/32;
+                address Philippa-Steventon-192.168.153.63 192.168.153.63/32;
+                address Ahmed-Doghri-192.168.153.212 192.168.153.212/32;
+                address Philippa-Steventon-192.168.225.162 192.168.225.162/32;
+                address Ahmed-Doghri-WiFi 192.168.225.181/32;
+                address Philippa-Steventon-SH-WiFi 192.168.235.104/32;
+            }
+            interfaces {
+                reth4.501 {
+                    host-inbound-traffic {
+                        system-services {
+                            ping;
+                        }
+                    }
+                }
+            }
+        }
+        security-zone MERAKI-WIFI-BYOD {
+            interfaces {
+                reth4.502 {
+                    host-inbound-traffic {
+                        system-services {
+                            ping;
+                        }
+                    }
+                }
+            }
+        }
+        security-zone MERAKI-WIFI-MEDIA {
+            interfaces {
+                reth4.503 {
+                    host-inbound-traffic {
+                        system-services {
+                            ping;
+                        }
+                    }
+                }
+            }
+        }
+        security-zone SB-FILM-STUDIO {
+            host-inbound-traffic {
+                system-services {
+                    ping;
+                }
+            }
+            interfaces {
+                reth4.330;
+            }
+        }
+        security-zone HOSTED-AWS-WITNESS {
+            address-book {
+                address AWS-DMZ-FSW-SS-1 100.88.81.77/32;
+                address AWS-DMZ-FSW-SS-2 100.88.81.90/32;
+                address AWS-DMZ-FSW-SS-3 100.88.84.96/28;
+                address AWS-DMZ-FSW-SS-4 100.88.84.112/28;
+                address AWS-DMZ-FSW-100.80.9.0/24 100.80.9.0/24;
+                address AWS-DMZ-FSW-100.80.9.69/32 100.80.9.69/32;
+                address AWS-DMZ-FSW-100.80.9.225/32 100.80.9.225/32;
+                address AWS-DMZ-FSW-100.80.9.229/32 100.80.9.229/32;
+                address AWS-DMZ-FSW-100.80.9.121/32 100.80.9.121/32;
+                address AWS-DMZ-FSW-100.80.9.140/32 100.80.9.140/32;
+                address-set AWS-DMZ-FSW {
+                    address AWS-DMZ-FSW-SS-1;
+                    address AWS-DMZ-FSW-SS-2;
+                    address AWS-DMZ-FSW-SS-3;
+                    address AWS-DMZ-FSW-SS-4;
+                }
+            }
+            interfaces {
+                reth2.18 {
+                    host-inbound-traffic {
+                        system-services {
+                            ping;
+                        }
+                        protocols {
+                            rip;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+interfaces {
+    ge-0/0/4 {
+        description SF-CORE-LAN-2960X_Gi1/0/21;
+        gigether-options {
+            redundant-parent reth4;
+        }
+    }
+    ge-0/0/5 {
+        description NY4510R-2/28;
+        gigether-options {
+            redundant-parent reth2;
+        }
+    }
+    ge-0/0/6 {
+        description SF-INTERNET-3750X-1/16;
+        gigether-options {
+            redundant-parent reth1;
+        }
+    }
+    ge-0/0/7 {
+        description SF-CORE-LAN-2960X-1/23;
+        gigether-options {
+            redundant-parent reth0;
+        }
+    }
+    ge-5/0/4 {
+        description SF-CORE-LAN-2960X_Gi2/0/21;
+        gigether-options {
+            redundant-parent reth4;
+        }
+    }
+    ge-5/0/5 {
+        description NY4510R-4/28;
+        gigether-options {
+            redundant-parent reth2;
+        }
+    }
+    ge-5/0/6 {
+        description SF-INTERNET-3750X-2/16;
+        gigether-options {
+            redundant-parent reth1;
+        }
+    }
+    ge-5/0/7 {
+        description SF-CORE-LAN-2960X-2/23;
+        gigether-options {
+            redundant-parent reth0;
+        }
+    }
+    fab0 {
+        fabric-options {
+            member-interfaces {
+                ge-0/0/0;
+            }
+        }
+    }
+    fab1 {
+        fabric-options {
+            member-interfaces {
+                ge-5/0/0;
+            }
+        }
+    }
+    reth0 {
+        redundant-ether-options {
+            redundancy-group 1;
+        }
+        unit 0 {
+            description SF-CORE-LAN-2960X;
+            family inet {
+                filter {
+                    input RH-REDIS;
+                }
+                address 10.139.2.62/16;
+            }
+        }
+    }
+    reth1 {
+        redundant-ether-options {
+            redundancy-group 2;
+        }
+        unit 0 {
+            description SF-INTERNET-3750X;
+            family inet {
+                filter {
+                    output AZURE-MIGRATION-SPEED-SETTER;
+                }
+                address 192.168.92.2/29;
+            }
+        }
+    }
+    reth2 {
+        description NY4510R;
+        vlan-tagging;
+        redundant-ether-options {
+            redundancy-group 3;
+        }
+        unit 18 {
+            description NY-4510;
+            vlan-id 18;
+            family inet {
+                filter {
+                    input HOSTED-DMZWITNESS;
+                }
+                address 192.168.128.62/30;
+            }
+        }
+        unit 274 {
+            description TFS-WITNESS-TRAFFIC;
+            vlan-id 274;
+            family inet {
+                address 192.168.202.129/28;
+            }
+        }
+        unit 2562 {
+            description "REDIS WITNESS";
+            vlan-id 2562;
+            family inet {
+                filter {
+                    input DMZ-REDIS;
+                }
+                address 192.168.80.101/24;
+            }
+        }
+        unit 2582 {
+            description DMZ-WITNESS-TRAFFIC;
+            vlan-id 2582;
+            family inet {
+                filter {
+                    input DMZWITNESS-HOSTED;
+                }
+                address 192.168.91.1/25;
+            }
+        }
+    }
+    reth4 {
+        description Secure-VLAN;
+        vlan-tagging;
+        redundant-ether-options {
+            redundancy-group 4;
+        }
+        unit 330 {
+            description SB-FILM-STUDIO-VLAN330;
+            vlan-id 330;
+            family inet {
+                address 192.168.129.1/27;
+            }
+        }
+        unit 333 {
+            description DC-KIT-VLAN333;
+            vlan-id 333;
+            family inet {
+                address 192.168.33.1/25;
+            }
+        }
+        unit 334 {
+            description IP-CCTV-VLAN334;
+            vlan-id 334;
+            family inet {
+                address 192.168.33.129/25;
+            }
+        }
+        unit 500 {
+            description MERAKI-WIFI-MGT;
+            vlan-id 500;
+            family inet {
+                address 192.168.53.129/27;
+            }
+        }
+        unit 501 {
+            description MERAKI-WIFI-CORPORATE;
+            vlan-id 501;
+            family inet;
+        }
+        unit 502 {
+            description MERAKI-WIFI-BYOD;
+            vlan-id 502;
+            family inet {
+                address 192.168.226.1/25;
+            }
+        }
+        unit 503 {
+            description MERAKI-WIFI-MEDIA;
+            vlan-id 503;
+            family inet {
+                address 192.168.226.129/25;
+            }
+        }
+    }
+}
+snmp {
+    description SF-CORE-DMZ-SRX340;
+    contact NIT;
+    interface reth0.0;
+    community INSread {
+        authorization read-only;
+        clients {
+            10.139.2.17/32;
+            10.139.41.85/32;
+            10.139.44.124/32;
+            10.139.46.27/32;
+            192.168.115.116/32;
+            192.168.115.117/32;
+            192.168.115.115/32;
+            10.139.2.22/32;
+            10.139.54.54/32;
+            10.139.64.64/32;
+        }
+    }
+    trap-group space {
+        targets {
+            192.168.115.116;
+        }
+    }
+}
+policy-options {
+    prefix-list AZURE-MIGRATION-SERVER {
+        192.168.147.237/32;
+    }
+    prefix-list AZURE-MIGRATION-SERVER-2 {
+        192.168.147.179/32;
+    }
+    policy-statement ACCEPT-DMZ-WITNESS-NIC-PREFIX {
+        term routes {
+            from {
+                instance master;
+                protocol direct;
+                route-filter 192.168.91.0/25 exact;
+            }
+            then accept;
+        }
+        then reject;
+    }
+    policy-statement ACCEPT-HOSTED-RIP-ROUTES-FOR-AWS {
+        term routes {
+            from {
+                protocol rip;
+                route-filter 100.88.0.0/13 exact;
+                route-filter 100.80.0.0/12 exact;
+            }
+            then accept;
+        }
+        then reject;
+    }
+    policy-statement ADVERTISE-DMZ-WITNESS-INTO-HOSTED-RIP {
+        term routes {
+            from {
+                instance master;
+                protocol direct;
+                route-filter 192.168.91.0/25 exact;
+            }
+            then accept;
+        }
+        then reject;
+    }
+}
+firewall {
+    family inet {
+        filter AZURE-MIGRATION-SPEED-SETTER {
+            term AZURE-MIGRATION {
+                from {
+                    prefix-list {
+                        AZURE-MIGRATION-SERVER;
+                        AZURE-MIGRATION-SERVER-2;
+                    }
+                }
+                then {
+                    policer 100Mb-THROTTLE;
+                    accept;
+                }
+            }
+            term last {
+                then accept;
+            }
+        }
+    }
+    policer 100Mb-THROTTLE {
+        if-exceeding {
+            bandwidth-limit 100m;
+            burst-size-limit 625k;
+        }
+        then discard;
+    }
+    filter DMZ-REDIS {
+        term 1 {
+            from {
+                destination-address {
+                    192.168.122.119/32;
+                }
+            }
+            then {
+                routing-instance default;
+            }
+        }
+        term new-ip {
+            from {
+                source-address {
+                    192.168.80.51/32;
+                }
+                destination-address {
+                    192.168.122.124/32;
+                }
+            }
+            then {
+                routing-instance default;
+            }
+        }
+        term AQL {
+            from {
+                source-address {
+                    192.168.80.51/32;
+                }
+                destination-address {
+                    192.168.61.95/32;
+                }
+            }
+            then {
+                routing-instance default;
+            }
+        }
+        term AQL-2 {
+            then {
+                routing-instance default;
+            }
+        }
+    }
+    filter DMZWITNESS-HOSTED {
+        term DMZWITNESS-TO-AWSWITNESSFSX {
+            from {
+                source-address {
+                    192.168.91.0/25;
+                }
+                destination-address {
+                    100.88.0.0/13;
+                    100.80.9.0/24;
+                }
+            }
+            then {
+                routing-instance AWS-WITNESS-FSX;
+            }
+        }
+        term last {
+            then {
+                routing-instance default;
+            }
+        }
+    }
+    filter HOSTED-DMZWITNESS {
+        term AWSWITNESSFSX-TO-DMZWITNESS {
+            from {
+                source-address {
+                    100.88.0.0/13;
+                    100.80.9.0/24;
+                }
+                destination-address {
+                    192.168.91.0/25;
+                }
+            }
+            then {
+                routing-instance default;
+            }
+        }
+        term last {
+            then {
+                routing-instance AWS-WITNESS-FSX;
+            }
+        }
+    }
+    filter RH-REDIS {
+        term 1 {
+            from {
+                source-address {
+                    192.168.122.119/32;
+                }
+            }
+            then {
+                routing-instance REDIS-RH-WITNESS;
+            }
+        }
+        term new-ip {
+            from {
+                source-address {
+                    192.168.122.124/32;
+                }
+                destination-address {
+                    192.168.80.51/32;
+                }
+            }
+            then {
+                routing-instance REDIS-RH-WITNESS;
+            }
+        }
+        term AQL {
+            from {
+                source-address {
+                    192.168.61.95/32;
+                }
+                destination-address {
+                    192.168.80.51/32;
+                }
+            }
+            then {
+                routing-instance REDIS-RH-WITNESS;
+            }
+        }
+        term AQL-2 {
+            from {
+                destination-address {
+                    192.168.80.16/32;
+                }
+            }
+            then {
+                routing-instance REDIS-RH-WITNESS;
+            }
+        }
+        term 2 {
+            then accept;
+        }
+    }
+}
+routing-instances {
+    AWS-WITNESS-FSX {
+        protocols {
+            rip {
+                group WITNESS {
+                    export ADVERTISE-DMZ-WITNESS-INTO-HOSTED-RIP;
+                    import ACCEPT-HOSTED-RIP-ROUTES-FOR-AWS;
+                    neighbor reth2.18 {
+                        update-interval 10;
+                    }
+                }
+            }
+        }
+        interface reth2.18;
+        instance-type virtual-router;
+        routing-options {
+            instance-import ACCEPT-DMZ-WITNESS-NIC-PREFIX;
+        }
+    }
+    REDIS-RH-WITNESS {
+        interface reth2.2562;
+        instance-type virtual-router;
+    }
+}
+applications {
+    application TCP-3333 {
+        protocol tcp;
+        destination-port 3333;
+    }
+    application TCP-3334 {
+        protocol tcp;
+        destination-port 3334;
+    }
+    application TCP-3335 {
+        protocol tcp;
+        destination-port 3335;
+    }
+    application TCP-3336 {
+        protocol tcp;
+        destination-port 3336;
+    }
+    application TCP-3337 {
+        protocol tcp;
+        destination-port 3337;
+    }
+    application TCP-36379 {
+        protocol tcp;
+        destination-port 36379;
+    }
+    application TCP-36380 {
+        protocol tcp;
+        destination-port 36380;
+    }
+    application TCP-20000-29999 {
+        protocol tcp;
+        destination-port 20000-29999;
+    }
+    application TCP-8080 {
+        protocol tcp;
+        destination-port 8080;
+    }
+    application TCP-9443 {
+        protocol tcp;
+        destination-port 9443;
+    }
+    application TCP-445 {
+        protocol tcp;
+        destination-port 445;
+    }
+    application SNMP {
+        description SNMP;
+        protocol udp;
+        destination-port 161;
+    }
+    application TCP-139 {
+        protocol tcp;
+        destination-port 139;
+    }
+    application TCP-8014 {
+        protocol tcp;
+        destination-port 8014;
+    }
+    application TCP-8530 {
+        protocol tcp;
+        destination-port 8530;
+    }
+    application TCP-8443 {
+        protocol tcp;
+        destination-port 8443;
+    }
+    application UDP-445 {
+        protocol udp;
+        destination-port 445;
+    }
+    application TCP-1968 {
+        protocol tcp;
+        destination-port 1968;
+    }
+    application TCP-3338 {
+        protocol tcp;
+        destination-port 3338;
+    }
+    application TCP-3339 {
+        protocol tcp;
+        destination-port 3339;
+    }
+    application TCP-8444 {
+        protocol tcp;
+        destination-port 8444;
+    }
+    application TCP-9080 {
+        protocol tcp;
+        destination-port 9080;
+    }
+    application TCP-9081 {
+        protocol tcp;
+        destination-port 9081;
+    }
+    application TCP-8070 {
+        protocol tcp;
+        destination-port 8070;
+    }
+    application TCP-8071 {
+        protocol tcp;
+        destination-port 8071;
+    }
+    application TCP-8001 {
+        protocol tcp;
+        destination-port 8001;
+    }
+    application TCP-10000-19999 {
+        protocol tcp;
+        destination-port 10000-19999;
+    }
+    application TCP-18000 {
+        protocol tcp;
+        destination-port 18000;
+    }
+    application TCP-53 {
+        protocol tcp;
+        destination-port 53;
+    }
+    application TCP-49152-65535 {
+        protocol tcp;
+        destination-port 49152-65535;
+    }
+    application TCP-3343 {
+        protocol tcp;
+        destination-port 3343;
+    }
+    application UDP-3343 {
+        protocol udp;
+        destination-port 3343;
+    }
+    application Meraki-Cloud-UDP {
+        protocol udp;
+        destination-port 7351;
+    }
+    application Meraki-Cloud-TCP {
+        protocol tcp;
+        destination-port 7734;
+    }
+    application Barra-Cloud {
+        protocol tcp;
+        destination-port 8788;
+    }
+    application Barra-Cloud2 {
+        protocol tcp;
+        destination-port 23557;
+    }
+    application TCP-1812 {
+        protocol tcp;
+        destination-port 1812;
+    }
+    application UDP-1812 {
+        protocol udp;
+        destination-port 1812;
+    }
+    application MICROSOFT-TEAMS-UDP-PORT-RANGE {
+        protocol udp;
+        destination-port 3478-3481;
+    }
+    application TCP-33966 {
+        protocol tcp;
+        destination-port 33966;
+    }
+    application TCP-502 {
+        protocol tcp;
+        destination-port 502;
+    }
+    application UDP-502 {
+        protocol udp;
+        destination-port 502;
+    }
+    application TCP-10001 {
+        protocol tcp;
+        destination-port 10001;
+    }
+    application TCP-9999 {
+        protocol tcp;
+        destination-port 9999;
+    }
+    application UDP-30718 {
+        protocol udp;
+        destination-port 30718;
+    }
+    application UDP-1434 {
+        protocol udp;
+        destination-port 1434;
+    }
+    application TCP-1433 {
+        protocol tcp;
+        destination-port 1433;
+    }
+    application TCP-7656 {
+        protocol tcp;
+        destination-port 7656;
+    }
+    application TCP-3389 {
+        protocol tcp;
+        destination-port 3389;
+    }
+    application TCP-50000-50200 {
+        protocol tcp;
+        destination-port 50000-50200;
+    }
+    application TCP-50201-50300 {
+        protocol tcp;
+        destination-port 50201-50300;
+    }
+    application TCP-135 {
+        protocol tcp;
+        destination-port 135;
+    }
+    application TCP-636 {
+        protocol tcp;
+        destination-port 636;
+    }
+    application TCP-33950-33970 {
+        protocol tcp;
+        destination-port 33950-33970;
+    }
+    application tcp-33989 {
+        protocol tcp;
+        destination-port 33989;
+    }
+    application tcp-44444 {
+        protocol tcp;
+        destination-port 44444;
+    }
+    application TCP-S3DOCS-3031 {
+        protocol tcp;
+        destination-port 3031;
+    }
+    application TCP-2010 {
+        protocol tcp;
+        destination-port 2010;
+    }
+    application TCP-2011 {
+        protocol tcp;
+        destination-port 2011;
+    }
+    application TCP-6988 {
+        protocol tcp;
+        destination-port 6988;
+    }
+    application TCP-3128 {
+        protocol tcp;
+        destination-port 3128;
+    }
+    application TCP-8000 {
+        protocol tcp;
+        destination-port 8000;
+    }
+    application TCP-756 {
+        protocol tcp;
+        destination-port 756;
+    }
+    application TCP-5548 {
+        protocol tcp;
+        destination-port 5548;
+    }
+    application TCP-49500 {
+        protocol tcp;
+        destination-port 49500;
+    }
+    application TCP-50000 {
+        protocol tcp;
+        destination-port 50000;
+    }
+    application UDP-50561 {
+        protocol udp;
+        destination-port 50561;
+    }
+    application TCP-11518 {
+        protocol tcp;
+        destination-port 11518;
+    }
+    application TCP-11517 {
+        protocol tcp;
+        destination-port 11517;
+    }
+    application UDP-11518 {
+        protocol udp;
+        destination-port 11518;
+    }
+    application UDP-11517 {
+        protocol udp;
+        destination-port 11517;
+    }
+    application UDP-1813 {
+        protocol udp;
+        destination-port 1813;
+    }
+    application UDP-67 {
+        protocol udp;
+        destination-port 67;
+    }
+    application UDP-68 {
+        protocol udp;
+        destination-port 68;
+    }
+    application UDP-464 {
+        protocol udp;
+        destination-port 464-464;
+    }
+    application TCP-464 {
+        protocol tcp;
+        destination-port 464-464;
+    }
+    application emis-udp-88 {
+        protocol udp;
+        destination-port 88;
+    }
+    application emis-tcp-88 {
+        protocol tcp;
+        destination-port 88;
+    }
+    application LDAP-SSL {
+        protocol tcp;
+        destination-port 636;
+    }
+    application emis-udp-389 {
+        protocol udp;
+        destination-port 389;
+    }
+    application emis-tcp-389 {
+        protocol tcp;
+        destination-port 389;
+    }
+    application TCP-3268 {
+        protocol tcp;
+        destination-port 3268;
+    }
+    application raw_syslog {
+        protocol udp;
+        destination-port 5140;
+    }
+    application raw_syslog_tcp {
+        protocol tcp;
+        destination-port 5140;
+    }
+    application TCP-8834 {
+        protocol tcp;
+        destination-port 8834;
+    }
+    application UDP-50562-50569 protocol udp;
+    application-set REDIS {
+        application TCP-3333;
+        application TCP-3334;
+        application TCP-3335;
+        application TCP-3336;
+        application TCP-3337;
+        application TCP-36379;
+        application TCP-36380;
+        application junos-dns-udp;
+        application junos-icmp-ping;
+        application TCP-20000-29999;
+        application TCP-8080;
+        application TCP-9443;
+        application TCP-8443;
+        application TCP-1968;
+        application TCP-3338;
+        application TCP-3339;
+        application TCP-8444;
+        application TCP-9080;
+        application TCP-9081;
+        application TCP-8070;
+        application TCP-8071;
+        application TCP-8001;
+        application TCP-10000-19999;
+    }
+    application-set WITNESS-PORT-GROUP {
+        application junos-smb;
+        application junos-ms-rpc-tcp;
+        application TCP-49152-65535;
+        application junos-icmp-ping;
+        application TCP-3343;
+        application UDP-3343;
+    }
+    application-set OUTBOUND-PORTS {
+        application junos-icmp-ping;
+        application junos-http;
+        application junos-https;
+        application Barra-Cloud;
+        application Barra-Cloud2;
+        application junos-dns-udp;
+        application junos-dns-tcp;
+        application junos-ssh;
+    }
+    application-set OUTBOUND-PORTS-Meraki-Cloud {
+        application Meraki-Cloud-UDP;
+        application Meraki-Cloud-TCP;
+    }
+    application-set MS-SQL-PORT-GROUP {
+        application TCP-3389;
+        application UDP-1434;
+        application TCP-1433;
+        application TCP-7656;
+        application junos-ping;
+        application junos-smb;
+        application TCP-50000-50200;
+        application TCP-50201-50300;
+        application TCP-135;
+        application junos-http;
+        application junos-https;
+    }
+    application-set SUPPORT-TOOL-PORT-GROUP {
+        application UDP-1434;
+        application TCP-1433;
+        application junos-ping;
+        application junos-smb;
+        application junos-http;
+        application junos-https;
+        application TCP-8080;
+    }
+    application-set DEVTEST-AWS-PORT-GROUP {
+        application junos-http;
+        application TCP-636;
+        application TCP-33950-33970;
+        application junos-https;
+        application junos-ssh;
+        application junos-icmp-ping;
+        application tcp-33989;
+        application TCP-8080;
+        application tcp-44444;
+        application TCP-1433;
+        application TCP-S3DOCS-3031;
+        application TCP-2010;
+        application TCP-2011;
+        application TCP-8443;
+        application TCP-6988;
+    }
+    application-set DOCUMATION-PORTS {
+        application TCP-756;
+        application TCP-5548;
+        application TCP-49500;
+        application TCP-50000;
+        application junos-smb;
+    }
+    application-set AD-PORTS-SMALL {
+        application junos-dns-udp;
+        application junos-dns-tcp;
+        application emis-tcp-88;
+        application emis-udp-88;
+        application UDP-464;
+        application TCP-464;
+        application LDAP-SSL;
+        application junos-ntp;
+    }
+    application-set AWS-WITNESS-PORT-GROUP {
+        application emis-tcp-389;
+        application emis-udp-389;
+        application TCP-3268;
+        application-set AD-PORTS-SMALL;
+    }
+}
+protocols {
+    ospf {
+        area 0.0.0.0 {
+            interface reth2.274 {
+                disable;
+            }
+            interface reth2.2582 {
+                disable;
+            }
+            interface lo0.0 {
+                passive;
+            }
+            interface reth1.0;
+            interface reth0.0 {
+                passive;
+            }
+        }
+    }
+}
+routing-options {
+    static {
+        route 0.0.0.0/0 next-hop 192.168.92.1;
+        route 44.128.200.140/32 next-hop 10.139.2.4;
+        route 192.168.82.192/26 next-hop 192.168.92.4;
+        route 192.168.82.0/26 next-hop 192.168.92.4;
+        route 212.240.194.173/32 next-hop 10.139.2.4;
+        route 44.1.181.0/24 next-hop 10.139.77.235;
+        route 44.128.167.0/24 next-hop 10.139.77.243;
+        route 212.240.216.163/32 next-hop 10.139.2.4;
+        route 192.168.2.0/24 next-hop 10.139.2.96;
+        route 192.168.14.2/32 next-hop 10.139.2.96;
+        route 44.128.131.32/27 next-hop 10.139.2.4;
+        route 44.128.131.64/28 next-hop 10.139.2.4;
+        route 44.128.133.0/26 next-hop 10.139.2.4;
+        route 192.168.147.0/24 next-hop 10.139.2.96;
+        route 192.168.96.87/32 next-hop 10.139.2.4;
+        route 192.168.96.88/32 next-hop 10.139.2.4;
+        route 10.141.10.0/24 next-hop 10.139.77.243;
+        route 192.168.144.0/23 next-hop 10.139.2.96;
+        route 192.168.96.0/25 next-hop 10.139.2.4;
+        route 192.168.113.0/26 next-hop 10.139.2.4;
+        route 192.168.93.0/25 next-hop 10.139.2.4;
+        route 192.168.125.0/24 next-hop 10.139.2.4;
+        route 44.128.135.0/24 next-hop 10.139.2.4;
+        route 192.168.115.0/24 next-hop 10.139.77.243;
+        route 100.100.254.51/32 next-hop 10.139.2.4;
+        route 100.100.254.52/32 next-hop 10.139.2.4;
+        route 192.168.176.0/24 next-hop 10.139.2.96;
+        route 192.168.190.0/23 next-hop 10.139.77.235;
+        route 192.168.123.0/24 next-hop 10.139.2.99;
+        route 44.128.200.252/32 next-hop 10.139.77.235;
+        route 44.128.200.251/32 next-hop 10.139.77.235;
+        route 192.168.96.208/28 next-hop 10.139.2.4;
+        route 192.168.152.0/24 next-hop 10.139.2.96;
+        route 192.168.247.0/24 next-hop 10.139.2.95;
+        route 192.168.244.0/23 next-hop 10.139.2.95;
+        route 192.168.0.0/16 next-hop 10.139.2.96;
+        route 192.168.80.0/24 next-hop 192.168.92.4;
+        route 192.168.81.0/24 next-hop 192.168.92.4;
+        route 192.168.82.128/26 next-hop 192.168.92.4;
+        route 192.168.72.0/23 next-hop 10.139.2.96;
+        route 192.168.13.0/26 next-hop 192.168.92.1;
+        route 192.168.13.128/27 next-hop 192.168.92.1;
+        route 212.240.216.166/32 next-hop 10.139.2.4;
+        route 192.168.19.0/26 next-hop 192.168.92.1;
+        route 192.168.83.0/24 next-hop 192.168.92.1;
+        route 192.168.84.0/24 next-hop 192.168.92.1;
+        route 185.13.72.0/22 next-hop 192.168.92.1;
+        route 10.141.7.0/24 next-hop 192.168.92.3;
+        route 192.168.12.0/24 next-hop 192.168.92.1;
+        route 192.168.153.0/24 next-hop 10.139.2.96;
+        route 192.168.19.128/26 next-hop 192.168.92.1;
+        route 192.168.22.160/27 next-hop 192.168.92.1;
+        route 44.128.132.0/24 next-hop 10.139.2.4;
+        route 44.128.169.54/32 next-hop 10.139.77.243;
+        route 44.128.169.48/32 next-hop 10.139.77.243;
+        route 141.97.0.0/16 next-hop 10.139.77.243;
+        route 212.148.0.0/16 next-hop 10.139.77.243;
+        route 212.196.0.0/16 next-hop 10.139.77.243;
+        route 10.0.0.0/8 next-hop 10.139.77.243;
+        route 192.168.24.0/26 next-hop 192.168.92.1;
+        route 44.128.165.155/32 next-hop 10.139.77.243;
+        route 44.128.165.134/32 next-hop 10.139.77.243;
+        route 192.168.34.32/28 next-hop 10.139.2.96;
+        route 192.168.34.0/27 next-hop 10.139.2.96;
+        route 10.8.1.16/32 next-hop 192.168.92.1;
+        route 192.168.22.96/27 next-hop 192.168.92.1;
+        route 192.168.106.31/32 next-hop 10.139.77.235;
+        route 192.168.39.0/24 next-hop 192.168.92.6;
+        route 192.168.36.0/24 next-hop 192.168.92.5;
+        route 192.168.43.0/24 next-hop 192.168.92.6;
+        route 44.128.164.0/24 next-hop 10.139.77.243;
+        route 44.1.162.46/32 next-hop 10.139.77.235;
+        route 192.168.10.0/24 next-hop 10.139.2.96;
+        route 10.141.7.92/32 next-hop 10.139.77.243;
+        route 1.1.99.0/24 next-hop 10.139.2.96;
+        route 10.111.111.5/32 next-hop 10.139.2.96;
+        route 10.111.111.6/32 next-hop 10.139.2.96;
+        route 172.26.128.0/24 next-hop 192.168.92.1;
+        route 172.26.216.0/24 next-hop 192.168.92.1;
+        route 192.168.121.0/24 next-hop 192.168.92.1;
+        route 192.168.53.32/28 next-hop 192.168.92.1;
+        route 192.168.52.0/28 next-hop 192.168.92.1;
+        route 192.168.61.64/26 next-hop 10.139.2.96;
+        route 192.168.53.96/27 next-hop [ 192.168.92.2 192.168.92.3 ];
+        route 192.168.234.0/23 next-hop 192.168.92.3;
+        route 100.100.254.0/24 next-hop 10.139.2.4;
+        route 1.1.96.0/24 next-hop 10.139.2.99;
+        route 44.128.166.102/32 next-hop 10.139.77.243;
+        route 10.0.100.26/32 next-hop 10.139.2.96;
+        route 10.0.2.141/32 next-hop 10.139.2.96;
+        route 10.0.100.70/32 next-hop 10.139.2.96;
+        route 44.128.165.0/24 next-hop 10.139.77.243;
+        route 44.128.203.198/32 next-hop 10.139.77.235;
+        route 44.128.203.101/32 next-hop 10.139.77.235;
+        route 129.67.226.18/32 next-hop 192.168.92.5;
+        route 192.168.146.10/32 next-hop 10.139.2.95;
+        route 44.128.200.133/32 next-hop 10.139.2.96;
+        route 44.128.105.0/24 next-hop 10.139.2.96;
+        route 44.128.219.54/32 next-hop 10.139.2.4;
+        route 44.128.219.55/32 next-hop 10.139.2.4;
+        route 44.128.203.53/32 next-hop 10.139.2.4;
+        route 44.128.203.55/32 next-hop 10.139.2.4;
+        route 100.64.9.64/26 next-hop 10.139.2.96;
+        route 192.168.245.0/24 next-hop 10.139.2.96;
+        route 44.128.166.0/24 next-hop 10.139.77.243;
+        route 100.64.24.0/24 next-hop 10.139.2.96;
+        route 100.64.25.0/26 next-hop 10.139.2.96;
+        route 100.64.26.0/23 next-hop 10.139.2.96;
+        route 100.64.30.0/24 next-hop 10.139.2.96;
+        route 100.64.25.64/26 next-hop 10.139.2.96;
+        route 100.112.32.0/20 next-hop 10.139.2.96;
+        route 10.2.79.60/32 next-hop 192.168.92.1;
+        route 10.2.249.100/32 next-hop 192.168.92.1;
+        route 10.2.249.55/32 next-hop 192.168.92.1;
+        route 10.2.250.110/32 next-hop 192.168.92.1;
+        route 10.2.250.112/32 next-hop 192.168.92.1;
+        route 10.2.79.114/32 next-hop 192.168.92.1;
+        route 10.2.79.59/32 next-hop 192.168.92.1;
+        route 10.2.79.61/32 next-hop 192.168.92.1;
+        route 195.11.196.45/32 next-hop 10.139.2.96;
+        route 155.205.25.64/26 next-hop 192.168.92.1;
+        route 155.205.17.128/26 next-hop 192.168.92.1;
+        route 100.64.20.192/26 next-hop 10.139.2.96;
+        route 100.68.5.128/25 next-hop 10.139.2.96;
+        route 100.68.6.0/25 next-hop 10.139.2.96;
+        route 100.76.8.0/25 next-hop 10.139.2.96;
+        route 100.88.4.0/25 next-hop 10.139.2.96;
+        route 100.68.2.128/26 next-hop 10.139.2.96;
+        route 100.68.40.0/25 next-hop 10.139.2.96;
+        route 192.168.132.0/24 next-hop 192.168.92.1;
+        route 44.128.83.0/24 next-hop 192.168.92.1;
+        route 100.88.102.164/32 next-hop 10.139.2.96;
+        route 100.88.102.176/32 next-hop 10.139.2.96;
+        route 192.168.224.0/23 next-hop 10.139.2.96;
+        route 100.68.43.192/26 next-hop 10.139.2.96;
+        route 100.68.66.0/24 next-hop 10.139.2.96;
+        route 100.68.44.144/28 next-hop 10.139.2.96;
+        route 100.68.46.144/28 next-hop 10.139.2.96;
+        route 100.68.44.0/24 next-hop 10.139.2.96;
+        route 100.68.46.0/24 next-hop 10.139.2.96;
+    }
+}

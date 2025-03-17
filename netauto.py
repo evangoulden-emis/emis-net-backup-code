@@ -11,22 +11,25 @@ def netauto():
 
 
 def backup_config(task):
-    secret = task.host.get("secret")
-    task.host.connection_options["napalm"] = ConnectionOptions(
-        extras={
-            "optional_args": {
-                "secret": secret,
-            }
-        },
-        hostname=task.host.hostname,
-        username=task.host.username,
-        password=task.host.password,
-        platform=task.host.platform,
-        port=task.host.port,
-    )
+    secret = ""
+    if task.host.platform == "ios":
+        secret = task.host.get("secret")
+        if not secret:
+            raise ValueError("No secret set for device")
+        task.host.connection_options["napalm"] = ConnectionOptions(
+            extras={
+                "optional_args": {
+                    "secret": secret,
+                }
+            },
+            hostname=task.host.hostname,
+            username=task.host.username,
+            password=task.host.password,
+            platform=task.host.platform,
+            port=task.host.port,
+        )
 
-    if not secret:
-        raise ValueError("No secret set for device")
+
     result = task.run(task=napalm_get, getters=["config"])
     running_config = result.result.get("config", {}).get("running", "")
 

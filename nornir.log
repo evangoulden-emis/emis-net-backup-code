@@ -653,3 +653,5 @@ nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
 2025-03-17 10:24:06,629 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
 2025-03-17 10:24:34,371 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
 2025-03-17 10:25:55,694 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2025-03-17 11:54:41,591 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 2 hosts
+2025-03-17 11:56:10,453 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 2 hosts

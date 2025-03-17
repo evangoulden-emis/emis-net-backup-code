@@ -1,10 +1,21 @@
 ---
+
+# Default Group for all devices
 all:
   data:
     domain: emishealth.com
+
+# Device Operating Systems
 ios:
   data:
     net_os: ios
+
+junos:
+  data:
+    net_os: junos
+
+
+# Device Locations
 fulford:
   data:
     location: fulford
@@ -13,7 +24,7 @@ egton:
       location: egton
 
 
-
+# Device Environments
 # Critical Groups to add to the inventory to ensure we
 # don't run any playbooks on the wrong environment
 prd:

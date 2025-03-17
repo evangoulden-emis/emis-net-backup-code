@@ -28,3 +28,16 @@ fg-core-3850:
     - prd
   data:
     secret: heisatwat
+
+
+SF-CORE-DMZ-SRX345-0:
+  hostname: 10.139.2.62
+  platform: junos
+  username: netadmin
+  password: 5h1th0tPa55w0rd!!
+  port: 22
+  groups:
+    - all
+    - junos
+    - fulford
+    - sbx
