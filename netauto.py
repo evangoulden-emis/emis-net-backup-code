@@ -6,12 +6,7 @@ from nornir_napalm.plugins.tasks import napalm_get
 
 def netauto():
     nr = InitNornir(config_file="config.yaml")
-    pp(f'''Fulford Devices: {nr.filter(location="fulford").inventory.hosts.keys()}''')
-    pp(f'''prd Devices: {nr.filter(env="prd").inventory.hosts}''')
-    pp(f'''sbx Devices: {nr.filter(env="sbx").inventory.hosts}''')
-    pp(f'''IOS Devices: {nr.filter(net_os="ios").inventory.hosts}''')
     sbx_devices = nr.filter(env="sbx")
-    print(type(sbx_devices))
     sbx_devices.run(task=backup_config)
 
 
@@ -19,7 +14,7 @@ def backup_config(task):
     secret = task.host.get("secret")
     task.host.connection_options["napalm"] = ConnectionOptions(
         extras={
-            "optional_args": {```
+            "optional_args": {
                 "secret": secret,
             }
         },
