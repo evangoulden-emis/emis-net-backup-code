@@ -7,6 +7,9 @@ ARG USER=netauto
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update \
     && apt install -y --no-install-recommends sudo \
+    git \
+    vim \
+    curl \
     && apt autoremove -y \
     && rm -rf /var/lib/apt/lists/* \
     && pip install --upgrade pip \
