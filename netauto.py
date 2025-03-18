@@ -1,4 +1,4 @@
-from pprint import pprint as pp
+#!/usr/local/bin/python3
 from nornir import InitNornir
 from nornir.core.inventory import ConnectionOptions
 from nornir_napalm.plugins.tasks import napalm_get

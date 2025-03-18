@@ -1,12 +1,7 @@
 {
-  "name": "Basic Python",
-  "build": {
-    "context": "..", 
-    "dockerfile": "Dockerfile"
-  },
-  "remoteUser": "netauto",  
-   
-  "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash"
-  }
+  "name": "Nornir Netauto - Devcontainer",
+  "dockerComposeFile": "docker-compose.yaml",
+  "service": "netauto",
+  "workspaceFolder": "/workspaces"
 }
+
