@@ -1,5 +1,4 @@
 #!/Users/evangoulden/.local/share/virtualenvs/encrypt_file-5-W2I_RU/bin/python3
-
 import os
 import base64
 import argparse

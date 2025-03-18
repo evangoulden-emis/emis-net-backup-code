@@ -6,11 +6,12 @@ from git_repo import get_github_instance, upload_file_to_github
 
 
 def netauto():
-    g, repo, backup_dir = get_github_instance()
     nr = InitNornir(config_file="config.yaml")
     sbx_devices = nr.filter(env="sbx")
     sbx_devices.run(task=backup_config)
-    upload_file_to_github(g, repo, backup_dir)
+    repo, backup_dir = get_github_instance()
+    upload_file_to_github(repo, backup_dir)
+
 
 def backup_config(task):
     secret = ""

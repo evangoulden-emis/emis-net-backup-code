@@ -1,23 +1,22 @@
 from typing import Any
-
 import github
 import yaml
-from github import Github
+from github import Github, GithubException
 import os
 
 from github.Repository import Repository
 
 
-def get_github_instance() -> set[Github | Repository | Any] | None:
+def get_github_instance():
     with open('github.yaml') as f:
         content = yaml.safe_load(f)
         g = Github(content['secrets']['token'])
         repo = g.get_repo(content['repo'])
         backup_dir = content['backup_dir']
-        return {g, repo, backup_dir}
+        return repo, backup_dir
 
 
-def upload_file_to_github(g, repo, backup_dir):
+def upload_file_to_github(repo, backup_dir):
     files = [f for f in os.listdir(backup_dir) if f.endswith('.txt')]
     for f in files:
         with open(f"{backup_dir}/{f}", 'r') as file:

@@ -1,2 +1,8 @@
+nornir==3.5.0; python_version >= '3.9' and python_version < '4.0'
+nornir-napalm==0.5.0; python_version >= '3.8' and python_version < '4.0'
+pygithub==2.6.1; python_version >= '3.8'
+
 nornir~=3.5.0
 nornir_napalm~=0.5.0
+PyGithub~=2.6.1
+PyYAML~=6.0.2

@@ -1,2 +1,43 @@
-Â´À$žº
-ZÙ™a ìgAAAAABn2DHRnT4exOvVmbBJOu_HWJ-SYSPbUuyThYtEQYCECY8pZWJOZDdJBOeMh2BfGygyFb3UgjffgBmSL0y7C19W-QoFWrJYJcIJ0b3YPPq9Q6_9L4Q07cysBGgOGSY7055Y8Y13EBQOiAcEVq-KccIgV4Jg_CsI5AzW7npAhmufDZ9TK-D1juLShkgIXgFaCRH0tIZFLLGuoCYqib0pxMFWDXTFbYf-1YdBgq4Xmpd2ZB24qZiqb3TXxbcPQPUOWpT2MborDyApBX7NWNlLCP5x-rt0q2QHz_XnHtAYcCwEBsQAr6X3zndduHv4mMOzUH_Kw1kZsXpK2iWal71_N4If1DTxQDf4Ts0gQ8FQ6q8KZtKEvt9obkeymbbwhBOXawT2pPc4FMv_-lHAivp-o6_QlqUvBwpinCjDswLUY1zw94KXiK7BPxjJ6km4KO-e9XNDBG2cinhDh5ZJaQ5LZW5L0nGfP3nDU8CNqam8Vw_B0Sxrvsu_EP8CCgvAhtbK1z1J8dNIynaJWdPbyssCa9HnwubxKxLhDrS8GaqFFyxj0UxGrWh3uH0MYieuFBKJ61e3YZ8zi56L0PFsi4aKhb4l2jdmDpc2gBA-R3bexHDoZimybCpSOmzpXcb_zMu0BTiqijIHxQiPibXafBb-rlrik7G891EQFmlCObgQrclP8ZJJ57q4xoB6eXAmvw9tzMG7k472-FvZnqVHELf3tEMZjkAin7XkfkAcMnH4U5QefJ0lKncURUUP3pp82b7ti6F6WqqxRngnXOgK1LMYsKKLHlmKagfv17v-JZzWXvyElFlKfJyVK2q6ENB0Z6cABqrCwSCh2Zqyn3dWt8NLg728_wV0c1V6HWRgpbfuzfovbA6UaGU=
+---
+buildroom:
+  hostname: 10.139.2.19
+  platform: ios
+  username: netadmin
+  password: 5h1th0tPa55w0rd!!
+  port: 22
+  groups:
+    - all
+    - ios
+    - fulford
+    - sbx
+  data:
+    secret: heisatwat
+
+
+fg-core-3850:
+  hostname: 10.141.14.1
+  platform: ios
+  username: netadmin
+  password: 5h1th0tPa55w0rd!!
+  secret: heisatwat
+  port: 22
+  groups:
+    - all
+    - ios
+    - egton
+    - sbx
+  data:
+    secret: heisatwat
+
+
+SF-CORE-DMZ-SRX345-0:
+  hostname: 10.139.2.62
+  platform: junos
+  username: netadmin
+  password: 5h1th0tPa55w0rd!!
+  port: 22
+  groups:
+    - all
+    - junos
+    - fulford
+    - sbx
